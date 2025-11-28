@@ -1,0 +1,751 @@
+id,name,source,category,size
+1,Sales Records,internal,weather,26094
+2,Employee Directory,external,customer,30105
+3,Research Publications,third-party,hr,47280
+4,Employee Directory,open-source,finance,12976
+5,Employee Directory,open-source,finance,19072
+6,Cyber Logs,open-source,network,5414
+7,Research Publications,internal,network,44351
+8,Customer Feedback,external,sales,33473
+9,IoT Sensor Data,open-source,network,26799
+10,Cyber Logs,internal,hr,45233
+11,Cyber Logs,open-source,hr,18525
+12,Network Traffic,external,customer,12873
+13,IoT Sensor Data,external,finance,1854
+14,Customer Feedback,internal,customer,46048
+15,Network Traffic,internal,alerts,13093
+16,Sales Records,open-source,finance,9058
+17,Employee Directory,external,customer,30796
+18,Security Alerts,internal,hr,18407
+19,Customer Feedback,third-party,network,26671
+20,Research Publications,external,weather,24002
+21,Sales Records,open-source,network,37092
+22,Sales Records,third-party,security,40896
+23,Research Publications,internal,alerts,22292
+24,IoT Sensor Data,internal,sensor,17710
+25,Financial Transactions,internal,sensor,27393
+26,Research Publications,internal,sensor,15794
+27,IoT Sensor Data,open-source,hr,44545
+28,Security Alerts,internal,weather,48894
+29,Customer Feedback,third-party,network,13554
+30,IoT Sensor Data,internal,sensor,310
+31,Employee Directory,external,security,20466
+32,Research Publications,internal,security,15056
+33,Customer Feedback,third-party,sales,25627
+34,IoT Sensor Data,third-party,hr,20630
+35,Sales Records,open-source,finance,28504
+36,Sales Records,open-source,weather,40957
+37,Security Alerts,external,weather,19662
+38,Research Publications,open-source,hr,15085
+39,Security Alerts,internal,security,45355
+40,Weather Data,internal,network,13167
+41,Research Publications,open-source,weather,39213
+42,Cyber Logs,internal,finance,38235
+43,Network Traffic,external,hr,13641
+44,Cyber Logs,external,sensor,21937
+45,Network Traffic,external,security,25522
+46,Research Publications,third-party,hr,42491
+47,IoT Sensor Data,third-party,sensor,38375
+48,Customer Feedback,internal,sensor,33488
+49,Employee Directory,third-party,security,46120
+50,Security Alerts,third-party,customer,18920
+51,Employee Directory,external,sales,47566
+52,IoT Sensor Data,internal,sales,32575
+53,Customer Feedback,third-party,sales,35167
+54,Employee Directory,internal,research,22198
+55,Financial Transactions,internal,alerts,20639
+56,Weather Data,third-party,network,11814
+57,Network Traffic,internal,customer,13840
+58,Cyber Logs,open-source,sales,8593
+59,Employee Directory,internal,research,35954
+60,IoT Sensor Data,open-source,security,4344
+61,Research Publications,external,weather,19218
+62,Network Traffic,third-party,network,36126
+63,Network Traffic,open-source,customer,12939
+64,Weather Data,internal,hr,44806
+65,Weather Data,external,hr,42256
+66,Research Publications,internal,alerts,17834
+67,Financial Transactions,third-party,sales,35642
+68,IoT Sensor Data,external,sensor,46259
+69,Financial Transactions,external,alerts,25825
+70,Security Alerts,internal,finance,34490
+71,Network Traffic,external,research,19264
+72,Sales Records,internal,sales,28934
+73,Cyber Logs,external,customer,8819
+74,Security Alerts,external,sensor,38451
+75,Employee Directory,external,network,38186
+76,IoT Sensor Data,internal,customer,33882
+77,Sales Records,third-party,research,23774
+78,Network Traffic,external,research,42866
+79,Customer Feedback,internal,customer,44775
+80,Security Alerts,external,sensor,46332
+81,Research Publications,open-source,hr,14519
+82,IoT Sensor Data,third-party,customer,789
+83,Financial Transactions,external,research,23829
+84,Customer Feedback,third-party,research,39077
+85,Research Publications,internal,finance,10200
+86,IoT Sensor Data,external,research,13124
+87,Employee Directory,internal,network,285
+88,Cyber Logs,external,research,5823
+89,Employee Directory,third-party,hr,24753
+90,Sales Records,external,network,14903
+91,Research Publications,third-party,network,30024
+92,Network Traffic,open-source,hr,27645
+93,Research Publications,external,security,10302
+94,IoT Sensor Data,third-party,sensor,45049
+95,Network Traffic,external,hr,35448
+96,Financial Transactions,internal,research,21046
+97,Cyber Logs,third-party,hr,17780
+98,Research Publications,internal,alerts,17682
+99,Security Alerts,internal,alerts,31088
+100,Financial Transactions,third-party,sensor,3346
+101,Customer Feedback,external,research,15020
+102,Financial Transactions,open-source,weather,48094
+103,Sales Records,third-party,security,43417
+104,Cyber Logs,internal,finance,9667
+105,IoT Sensor Data,external,finance,33845
+106,Customer Feedback,third-party,security,33393
+107,Cyber Logs,open-source,sensor,28854
+108,Cyber Logs,external,sales,24361
+109,IoT Sensor Data,internal,alerts,8315
+110,Security Alerts,internal,finance,45862
+111,Research Publications,third-party,weather,2613
+112,Weather Data,internal,security,31278
+113,Weather Data,open-source,sales,11706
+114,Weather Data,third-party,finance,25517
+115,Network Traffic,internal,network,8387
+116,Sales Records,third-party,research,42288
+117,Security Alerts,internal,finance,22439
+118,Weather Data,third-party,sales,33687
+119,Network Traffic,internal,research,48541
+120,Security Alerts,open-source,weather,21653
+121,Cyber Logs,open-source,customer,18698
+122,Cyber Logs,internal,finance,45618
+123,Cyber Logs,internal,finance,25189
+124,Customer Feedback,internal,security,18593
+125,Network Traffic,open-source,alerts,45156
+126,Network Traffic,internal,weather,26183
+127,Customer Feedback,internal,weather,34004
+128,Cyber Logs,internal,security,11004
+129,Sales Records,open-source,sensor,36314
+130,Financial Transactions,internal,weather,11365
+131,Research Publications,third-party,sales,41160
+132,Network Traffic,third-party,research,37635
+133,Financial Transactions,open-source,hr,4594
+134,Weather Data,third-party,customer,39655
+135,Research Publications,open-source,sensor,4378
+136,Security Alerts,open-source,research,15170
+137,Network Traffic,open-source,alerts,12474
+138,Network Traffic,third-party,customer,9468
+139,Research Publications,open-source,sensor,30924
+140,Research Publications,third-party,finance,34160
+141,Cyber Logs,internal,security,13541
+142,Weather Data,third-party,research,34986
+143,Security Alerts,internal,network,47028
+144,Cyber Logs,internal,finance,30974
+145,Weather Data,open-source,research,2329
+146,Customer Feedback,open-source,sales,48710
+147,Sales Records,external,sensor,22702
+148,Security Alerts,external,finance,36990
+149,IoT Sensor Data,third-party,hr,45392
+150,Weather Data,open-source,weather,33073
+151,Weather Data,internal,alerts,23278
+152,Security Alerts,internal,network,11110
+153,Sales Records,open-source,security,19350
+154,IoT Sensor Data,internal,sensor,36381
+155,IoT Sensor Data,internal,hr,32744
+156,Research Publications,open-source,alerts,9408
+157,Customer Feedback,external,alerts,3572
+158,Research Publications,internal,research,11517
+159,Financial Transactions,open-source,customer,37441
+160,Customer Feedback,external,security,38651
+161,Financial Transactions,third-party,finance,11694
+162,Sales Records,third-party,research,48491
+163,Cyber Logs,internal,hr,30452
+164,Research Publications,third-party,alerts,4904
+165,Financial Transactions,open-source,research,5018
+166,Employee Directory,open-source,hr,22530
+167,Financial Transactions,external,finance,47771
+168,Research Publications,third-party,security,48142
+169,Research Publications,third-party,security,32921
+170,Weather Data,open-source,research,13526
+171,IoT Sensor Data,open-source,hr,39710
+172,Security Alerts,third-party,security,40183
+173,Sales Records,third-party,security,39601
+174,Cyber Logs,open-source,finance,4792
+175,Financial Transactions,open-source,weather,3342
+176,Financial Transactions,external,sensor,37368
+177,Network Traffic,external,network,44591
+178,Sales Records,third-party,customer,21797
+179,Employee Directory,third-party,weather,40676
+180,Financial Transactions,external,weather,26066
+181,Weather Data,internal,network,9073
+182,Network Traffic,external,hr,40778
+183,Financial Transactions,open-source,security,45915
+184,Cyber Logs,internal,alerts,40198
+185,Financial Transactions,third-party,sensor,11276
+186,Financial Transactions,open-source,alerts,39201
+187,Customer Feedback,open-source,sensor,43301
+188,Employee Directory,third-party,sales,964
+189,Weather Data,third-party,customer,38261
+190,Financial Transactions,third-party,customer,13599
+191,Customer Feedback,internal,customer,36212
+192,IoT Sensor Data,third-party,security,40635
+193,Financial Transactions,open-source,sales,46773
+194,IoT Sensor Data,open-source,weather,10023
+195,Security Alerts,open-source,finance,9533
+196,Network Traffic,third-party,finance,12826
+197,Cyber Logs,third-party,alerts,13212
+198,Customer Feedback,open-source,sensor,31356
+199,Weather Data,third-party,sales,1832
+200,Weather Data,external,customer,11507
+201,Cyber Logs,external,customer,10686
+202,Cyber Logs,third-party,research,23309
+203,Cyber Logs,internal,security,29661
+204,Security Alerts,external,alerts,10816
+205,Employee Directory,third-party,hr,40635
+206,Sales Records,external,finance,31153
+207,Cyber Logs,external,alerts,39619
+208,Financial Transactions,external,alerts,31593
+209,Weather Data,internal,network,21217
+210,Research Publications,external,hr,41009
+211,Research Publications,external,alerts,42761
+212,Customer Feedback,open-source,customer,20659
+213,Network Traffic,external,sensor,30305
+214,Financial Transactions,third-party,security,21284
+215,Network Traffic,internal,network,20620
+216,Employee Directory,internal,network,36046
+217,Research Publications,third-party,network,27841
+218,Customer Feedback,internal,sensor,45119
+219,Cyber Logs,open-source,sensor,19430
+220,IoT Sensor Data,open-source,network,32684
+221,Sales Records,open-source,alerts,48233
+222,Customer Feedback,internal,research,27812
+223,Security Alerts,external,security,43558
+224,Network Traffic,internal,research,6422
+225,Employee Directory,open-source,alerts,13429
+226,IoT Sensor Data,open-source,network,4114
+227,Financial Transactions,open-source,weather,47275
+228,Financial Transactions,third-party,sales,5825
+229,Employee Directory,third-party,finance,22472
+230,Employee Directory,internal,sales,23086
+231,Sales Records,third-party,sensor,14798
+232,Network Traffic,third-party,sensor,36173
+233,Customer Feedback,open-source,alerts,26977
+234,Security Alerts,internal,weather,24828
+235,Financial Transactions,open-source,sales,18262
+236,Security Alerts,open-source,customer,3347
+237,IoT Sensor Data,internal,research,29680
+238,Network Traffic,internal,network,32456
+239,Employee Directory,internal,sensor,44278
+240,Financial Transactions,third-party,network,17121
+241,Financial Transactions,external,network,28449
+242,Employee Directory,third-party,customer,33504
+243,Sales Records,internal,security,6029
+244,Employee Directory,internal,finance,38201
+245,Employee Directory,open-source,security,29097
+246,IoT Sensor Data,external,research,49866
+247,Cyber Logs,external,customer,9408
+248,Financial Transactions,internal,finance,47556
+249,IoT Sensor Data,internal,hr,10036
+250,Financial Transactions,internal,sensor,13975
+251,Employee Directory,open-source,security,10091
+252,Sales Records,external,research,17081
+253,Sales Records,internal,hr,10343
+254,IoT Sensor Data,external,sales,48386
+255,Cyber Logs,third-party,customer,41836
+256,Research Publications,external,security,25400
+257,IoT Sensor Data,third-party,security,36616
+258,Customer Feedback,external,customer,19229
+259,Financial Transactions,external,sales,39226
+260,Weather Data,open-source,research,37713
+261,Security Alerts,internal,sensor,10149
+262,Research Publications,third-party,hr,30755
+263,Security Alerts,third-party,sales,39193
+264,Sales Records,external,finance,14003
+265,Customer Feedback,open-source,network,28115
+266,Research Publications,open-source,hr,13002
+267,Weather Data,internal,customer,31144
+268,Financial Transactions,internal,research,30151
+269,Financial Transactions,external,security,38078
+270,Financial Transactions,third-party,weather,21483
+271,Cyber Logs,open-source,research,30763
+272,Network Traffic,open-source,research,22964
+273,Customer Feedback,open-source,network,46324
+274,Financial Transactions,internal,finance,41410
+275,Weather Data,internal,alerts,43895
+276,Sales Records,open-source,security,49147
+277,Customer Feedback,external,network,20543
+278,Security Alerts,external,sensor,28677
+279,Research Publications,internal,hr,20863
+280,Sales Records,third-party,weather,12424
+281,Security Alerts,external,weather,31348
+282,Network Traffic,internal,weather,2367
+283,Network Traffic,third-party,research,40065
+284,Weather Data,third-party,research,30151
+285,Financial Transactions,internal,security,42775
+286,Cyber Logs,third-party,customer,46539
+287,Network Traffic,internal,finance,32332
+288,IoT Sensor Data,open-source,weather,47196
+289,Sales Records,third-party,hr,9264
+290,Cyber Logs,third-party,sensor,45678
+291,Cyber Logs,internal,research,26009
+292,Employee Directory,internal,weather,38378
+293,Employee Directory,external,security,31332
+294,Cyber Logs,external,finance,4570
+295,Weather Data,open-source,sales,18783
+296,IoT Sensor Data,internal,research,43416
+297,Financial Transactions,open-source,weather,13149
+298,Security Alerts,external,network,49316
+299,Financial Transactions,external,hr,4208
+300,Sales Records,external,network,16510
+301,Cyber Logs,open-source,sales,29904
+302,Weather Data,third-party,hr,21342
+303,Sales Records,open-source,alerts,26467
+304,Employee Directory,open-source,research,37393
+305,Sales Records,external,finance,27836
+306,Weather Data,external,hr,19111
+307,Security Alerts,third-party,alerts,43192
+308,Employee Directory,third-party,alerts,13020
+309,Network Traffic,internal,sensor,8009
+310,Financial Transactions,internal,finance,3543
+311,Sales Records,internal,sales,16233
+312,IoT Sensor Data,internal,customer,39418
+313,Weather Data,external,sales,45001
+314,Financial Transactions,third-party,hr,8679
+315,Sales Records,internal,security,1981
+316,Employee Directory,external,sales,12493
+317,Network Traffic,open-source,alerts,8583
+318,IoT Sensor Data,third-party,weather,11943
+319,Customer Feedback,external,weather,20474
+320,IoT Sensor Data,internal,sensor,36207
+321,IoT Sensor Data,third-party,alerts,2164
+322,Network Traffic,internal,hr,45786
+323,Network Traffic,external,customer,30551
+324,Network Traffic,external,research,49293
+325,Financial Transactions,third-party,sales,45348
+326,Weather Data,external,network,21791
+327,Security Alerts,open-source,sales,31511
+328,Cyber Logs,internal,finance,46173
+329,Sales Records,internal,research,33047
+330,IoT Sensor Data,third-party,customer,9690
+331,Financial Transactions,internal,sensor,16829
+332,Customer Feedback,open-source,alerts,31625
+333,IoT Sensor Data,third-party,network,19726
+334,Sales Records,third-party,finance,43535
+335,IoT Sensor Data,third-party,security,34230
+336,Sales Records,open-source,research,25233
+337,Research Publications,third-party,sales,19203
+338,Sales Records,external,weather,2124
+339,Research Publications,third-party,sensor,38496
+340,Security Alerts,internal,sales,24876
+341,Research Publications,open-source,finance,353
+342,Sales Records,external,sensor,44457
+343,Financial Transactions,internal,finance,17227
+344,Weather Data,internal,alerts,9864
+345,Research Publications,external,network,31078
+346,Network Traffic,third-party,network,39380
+347,Customer Feedback,external,sensor,48141
+348,Weather Data,third-party,sales,31258
+349,Customer Feedback,external,weather,4866
+350,Cyber Logs,internal,sensor,9477
+351,Employee Directory,open-source,security,13727
+352,Weather Data,external,alerts,35427
+353,Research Publications,internal,network,38134
+354,Employee Directory,third-party,hr,33687
+355,Customer Feedback,external,finance,39351
+356,Employee Directory,external,customer,4097
+357,Cyber Logs,external,alerts,34372
+358,Customer Feedback,open-source,security,979
+359,Sales Records,external,security,46690
+360,Security Alerts,external,sales,11352
+361,Financial Transactions,internal,research,8355
+362,Network Traffic,open-source,customer,6821
+363,Financial Transactions,external,security,14720
+364,Research Publications,third-party,alerts,17499
+365,Network Traffic,third-party,weather,39608
+366,Research Publications,open-source,network,9287
+367,Cyber Logs,open-source,sensor,37982
+368,Sales Records,external,hr,36818
+369,IoT Sensor Data,external,sensor,24883
+370,Research Publications,external,hr,43426
+371,Sales Records,internal,customer,37412
+372,Financial Transactions,third-party,research,45654
+373,Customer Feedback,external,network,11615
+374,Cyber Logs,external,sensor,11044
+375,Cyber Logs,external,security,49511
+376,Weather Data,internal,security,12825
+377,Research Publications,open-source,weather,24177
+378,Employee Directory,third-party,security,16119
+379,Financial Transactions,external,customer,28257
+380,Employee Directory,internal,alerts,10338
+381,Research Publications,third-party,finance,3846
+382,Financial Transactions,external,customer,40786
+383,Sales Records,internal,finance,24213
+384,Employee Directory,open-source,sales,38102
+385,IoT Sensor Data,open-source,research,45698
+386,Customer Feedback,open-source,finance,18565
+387,Customer Feedback,internal,alerts,29393
+388,Cyber Logs,internal,hr,27584
+389,Research Publications,third-party,alerts,42538
+390,Weather Data,open-source,sales,38317
+391,Cyber Logs,third-party,hr,36636
+392,Weather Data,open-source,alerts,31346
+393,Customer Feedback,open-source,security,36687
+394,Cyber Logs,open-source,hr,32839
+395,Employee Directory,external,hr,39618
+396,Security Alerts,external,alerts,2339
+397,Weather Data,internal,network,41935
+398,Sales Records,internal,research,24211
+399,Financial Transactions,external,sensor,48023
+400,Sales Records,internal,network,42684
+401,Weather Data,external,sales,10326
+402,Network Traffic,third-party,research,48526
+403,Weather Data,third-party,hr,3689
+404,Customer Feedback,external,security,8737
+405,Network Traffic,external,finance,9030
+406,Network Traffic,open-source,customer,34199
+407,Customer Feedback,internal,sensor,42665
+408,IoT Sensor Data,open-source,sensor,30249
+409,Research Publications,external,finance,9434
+410,Sales Records,external,hr,25353
+411,Research Publications,external,sensor,13271
+412,Cyber Logs,open-source,research,47582
+413,Security Alerts,open-source,security,2969
+414,Customer Feedback,third-party,network,2598
+415,Research Publications,open-source,sales,36992
+416,Weather Data,external,finance,6805
+417,IoT Sensor Data,third-party,network,714
+418,Cyber Logs,internal,security,16385
+419,Customer Feedback,external,weather,7334
+420,Research Publications,third-party,network,29349
+421,Research Publications,external,hr,11139
+422,Cyber Logs,third-party,customer,45693
+423,Sales Records,third-party,sensor,39068
+424,IoT Sensor Data,external,finance,19245
+425,IoT Sensor Data,third-party,sales,38758
+426,Research Publications,third-party,customer,42705
+427,Employee Directory,external,weather,2630
+428,Financial Transactions,third-party,network,7694
+429,Customer Feedback,internal,research,25175
+430,Network Traffic,third-party,research,16282
+431,Security Alerts,internal,security,45852
+432,Weather Data,third-party,sales,14765
+433,Customer Feedback,external,network,49626
+434,Customer Feedback,internal,network,15624
+435,Research Publications,third-party,finance,7046
+436,Research Publications,open-source,research,8915
+437,IoT Sensor Data,third-party,research,23755
+438,Security Alerts,open-source,network,30580
+439,Sales Records,external,security,38426
+440,IoT Sensor Data,external,network,2650
+441,Security Alerts,third-party,sensor,26099
+442,Cyber Logs,internal,sensor,40742
+443,Research Publications,external,alerts,49408
+444,Customer Feedback,external,hr,5618
+445,Security Alerts,internal,research,31269
+446,Customer Feedback,third-party,alerts,34635
+447,Cyber Logs,internal,finance,28473
+448,Financial Transactions,third-party,research,12479
+449,Employee Directory,internal,finance,28739
+450,Cyber Logs,internal,sensor,21285
+451,Employee Directory,third-party,hr,25432
+452,Network Traffic,third-party,sales,30063
+453,Cyber Logs,third-party,network,47730
+454,Sales Records,third-party,finance,47243
+455,Research Publications,external,research,43365
+456,Network Traffic,internal,sensor,23375
+457,Network Traffic,internal,network,43459
+458,Research Publications,external,sensor,45393
+459,Network Traffic,internal,sensor,16064
+460,IoT Sensor Data,open-source,research,35766
+461,Customer Feedback,third-party,sales,6861
+462,Cyber Logs,open-source,customer,17445
+463,Financial Transactions,internal,alerts,4864
+464,Security Alerts,external,network,15045
+465,Weather Data,open-source,network,2812
+466,IoT Sensor Data,third-party,network,24111
+467,IoT Sensor Data,third-party,finance,1767
+468,Cyber Logs,external,hr,26592
+469,Cyber Logs,third-party,network,2878
+470,Weather Data,internal,sensor,4311
+471,Customer Feedback,third-party,sales,44634
+472,Security Alerts,internal,hr,36804
+473,Cyber Logs,internal,sales,33062
+474,Research Publications,internal,network,5699
+475,Cyber Logs,internal,security,20999
+476,Weather Data,open-source,finance,19273
+477,Employee Directory,internal,security,29711
+478,IoT Sensor Data,external,customer,19196
+479,Weather Data,open-source,sales,30219
+480,Employee Directory,external,weather,1468
+481,Financial Transactions,internal,research,8770
+482,Sales Records,external,sales,28862
+483,Sales Records,internal,finance,34186
+484,Security Alerts,open-source,network,35453
+485,Cyber Logs,external,weather,41106
+486,Employee Directory,internal,finance,8936
+487,Research Publications,internal,finance,44631
+488,Security Alerts,internal,hr,42935
+489,Research Publications,third-party,alerts,31475
+490,Customer Feedback,third-party,research,34402
+491,Employee Directory,external,sensor,39123
+492,Weather Data,third-party,security,4985
+493,Financial Transactions,open-source,customer,39547
+494,IoT Sensor Data,external,weather,25151
+495,Weather Data,open-source,weather,19244
+496,Cyber Logs,external,weather,20642
+497,Sales Records,third-party,network,303
+498,IoT Sensor Data,internal,hr,31379
+499,IoT Sensor Data,open-source,customer,32079
+500,Financial Transactions,open-source,research,20850
+501,Cyber Logs,external,sensor,39482
+502,Employee Directory,open-source,hr,16397
+503,Employee Directory,open-source,sales,11241
+504,Customer Feedback,external,security,45006
+505,Customer Feedback,internal,sensor,19207
+506,Employee Directory,open-source,alerts,15292
+507,Sales Records,open-source,sensor,1933
+508,Network Traffic,open-source,network,9387
+509,Employee Directory,external,alerts,16877
+510,Research Publications,third-party,hr,17775
+511,Employee Directory,external,sales,43184
+512,Security Alerts,third-party,security,4801
+513,IoT Sensor Data,external,research,48726
+514,IoT Sensor Data,open-source,alerts,18336
+515,Security Alerts,external,sensor,41530
+516,Network Traffic,internal,finance,46962
+517,Weather Data,open-source,research,20288
+518,Research Publications,external,alerts,28750
+519,IoT Sensor Data,internal,sales,25967
+520,Customer Feedback,third-party,weather,15106
+521,Employee Directory,external,sensor,31430
+522,Network Traffic,open-source,weather,31467
+523,Employee Directory,third-party,customer,44833
+524,Sales Records,internal,sales,34611
+525,Customer Feedback,open-source,network,29760
+526,Customer Feedback,internal,hr,36716
+527,IoT Sensor Data,external,network,47884
+528,Sales Records,open-source,network,14868
+529,Security Alerts,third-party,hr,17264
+530,IoT Sensor Data,third-party,customer,28381
+531,Customer Feedback,external,security,38740
+532,Cyber Logs,internal,hr,13417
+533,Customer Feedback,external,alerts,9168
+534,Security Alerts,external,network,44331
+535,Research Publications,external,weather,31981
+536,IoT Sensor Data,external,customer,9864
+537,Weather Data,third-party,research,36924
+538,Employee Directory,external,security,16842
+539,Sales Records,open-source,customer,31912
+540,Sales Records,open-source,security,35228
+541,Research Publications,external,sensor,15051
+542,IoT Sensor Data,third-party,security,8303
+543,Cyber Logs,third-party,sensor,28583
+544,Financial Transactions,internal,sensor,390
+545,Security Alerts,external,customer,18843
+546,Financial Transactions,external,security,23616
+547,Weather Data,open-source,customer,4523
+548,Cyber Logs,internal,sensor,19573
+549,Weather Data,internal,weather,10865
+550,Sales Records,internal,research,8698
+551,Employee Directory,external,research,10740
+552,Customer Feedback,open-source,alerts,47095
+553,Financial Transactions,open-source,network,12588
+554,Network Traffic,open-source,weather,7194
+555,Customer Feedback,third-party,alerts,27828
+556,Customer Feedback,external,research,12733
+557,Cyber Logs,external,customer,30387
+558,IoT Sensor Data,internal,security,29495
+559,Research Publications,open-source,hr,5946
+560,Sales Records,internal,hr,20254
+561,Employee Directory,open-source,alerts,9311
+562,Employee Directory,external,sensor,46425
+563,Research Publications,open-source,network,14278
+564,Employee Directory,internal,sales,5363
+565,IoT Sensor Data,open-source,customer,10303
+566,Security Alerts,external,sales,21849
+567,Financial Transactions,internal,sales,31479
+568,Customer Feedback,external,network,8441
+569,Sales Records,external,research,884
+570,Research Publications,open-source,sales,4710
+571,Sales Records,open-source,hr,30969
+572,Employee Directory,internal,customer,24921
+573,Research Publications,third-party,security,30310
+574,IoT Sensor Data,open-source,research,19887
+575,Financial Transactions,third-party,finance,11548
+576,Network Traffic,open-source,security,39950
+577,Security Alerts,third-party,customer,33359
+578,Weather Data,open-source,alerts,48226
+579,Cyber Logs,internal,research,27746
+580,IoT Sensor Data,third-party,research,14059
+581,Weather Data,open-source,hr,17402
+582,Research Publications,internal,security,26642
+583,Weather Data,external,customer,11528
+584,Security Alerts,open-source,research,33795
+585,Research Publications,internal,security,46852
+586,Customer Feedback,internal,finance,13353
+587,Weather Data,external,security,28124
+588,Customer Feedback,internal,network,26030
+589,Security Alerts,internal,customer,8897
+590,Research Publications,third-party,customer,21758
+591,Security Alerts,external,security,43846
+592,Network Traffic,internal,hr,7372
+593,Sales Records,external,sales,5186
+594,Security Alerts,internal,sales,38208
+595,Research Publications,third-party,network,4005
+596,Financial Transactions,third-party,customer,45344
+597,Cyber Logs,internal,alerts,38161
+598,Sales Records,open-source,network,34081
+599,Customer Feedback,internal,hr,27615
+600,Research Publications,third-party,security,30628
+601,Cyber Logs,external,sales,16280
+602,Customer Feedback,third-party,weather,48791
+603,Cyber Logs,external,customer,13624
+604,Employee Directory,internal,weather,14949
+605,Security Alerts,internal,alerts,31752
+606,Weather Data,internal,research,35991
+607,Customer Feedback,third-party,alerts,34419
+608,Sales Records,third-party,customer,44081
+609,Cyber Logs,internal,security,3377
+610,Sales Records,third-party,finance,18359
+611,IoT Sensor Data,external,alerts,22184
+612,Customer Feedback,third-party,alerts,17467
+613,Financial Transactions,third-party,weather,19977
+614,Employee Directory,external,customer,27034
+615,IoT Sensor Data,external,sales,16056
+616,Customer Feedback,third-party,sensor,40723
+617,Financial Transactions,open-source,finance,12100
+618,Network Traffic,third-party,customer,40878
+619,IoT Sensor Data,third-party,security,19529
+620,Cyber Logs,open-source,security,14863
+621,Employee Directory,third-party,sensor,41365
+622,Research Publications,open-source,sales,33945
+623,Network Traffic,open-source,finance,44036
+624,Research Publications,external,research,17037
+625,Customer Feedback,internal,hr,48126
+626,Sales Records,third-party,weather,28074
+627,Weather Data,third-party,security,38539
+628,Customer Feedback,third-party,network,45083
+629,Research Publications,third-party,finance,41988
+630,Cyber Logs,external,security,44869
+631,Financial Transactions,open-source,finance,6489
+632,Sales Records,open-source,hr,14933
+633,Network Traffic,third-party,sales,18895
+634,Network Traffic,third-party,hr,27086
+635,Customer Feedback,third-party,customer,42303
+636,Customer Feedback,internal,weather,9691
+637,Cyber Logs,external,finance,4166
+638,Research Publications,third-party,research,34654
+639,Security Alerts,internal,sales,4345
+640,Customer Feedback,internal,sales,33697
+641,Employee Directory,open-source,sales,16690
+642,Cyber Logs,internal,customer,45766
+643,Customer Feedback,internal,sensor,5338
+644,Customer Feedback,external,sales,17236
+645,Sales Records,open-source,sensor,29917
+646,Research Publications,open-source,sensor,27318
+647,Network Traffic,external,finance,4883
+648,Security Alerts,open-source,security,26575
+649,Customer Feedback,third-party,security,28947
+650,Employee Directory,internal,alerts,533
+651,Network Traffic,third-party,sensor,34051
+652,Research Publications,external,finance,12290
+653,Network Traffic,internal,weather,44518
+654,Customer Feedback,internal,hr,49468
+655,Research Publications,third-party,finance,26165
+656,Weather Data,third-party,security,1641
+657,Customer Feedback,external,alerts,22803
+658,Cyber Logs,external,network,9302
+659,Sales Records,third-party,weather,6496
+660,IoT Sensor Data,external,customer,39132
+661,Weather Data,third-party,research,11737
+662,Network Traffic,external,weather,40127
+663,Customer Feedback,third-party,customer,20457
+664,Research Publications,internal,finance,39920
+665,Employee Directory,external,network,26138
+666,Financial Transactions,external,alerts,38469
+667,Weather Data,external,sales,8821
+668,Weather Data,open-source,network,8798
+669,Network Traffic,open-source,customer,4076
+670,Research Publications,third-party,sensor,46102
+671,Customer Feedback,third-party,research,19808
+672,IoT Sensor Data,open-source,alerts,7141
+673,Employee Directory,external,alerts,1887
+674,Sales Records,internal,sensor,31264
+675,Financial Transactions,external,customer,2710
+676,Research Publications,open-source,research,674
+677,Employee Directory,third-party,network,41830
+678,Network Traffic,internal,sensor,1843
+679,Financial Transactions,external,sales,29210
+680,Sales Records,open-source,sales,48472
+681,Weather Data,third-party,customer,699
+682,Security Alerts,internal,sensor,44373
+683,Network Traffic,third-party,hr,15311
+684,Employee Directory,internal,finance,47894
+685,Sales Records,external,weather,14845
+686,IoT Sensor Data,external,hr,39371
+687,IoT Sensor Data,internal,security,27033
+688,Weather Data,third-party,weather,1591
+689,Employee Directory,external,sensor,38546
+690,Customer Feedback,internal,weather,27216
+691,Weather Data,third-party,network,5817
+692,Research Publications,third-party,weather,46188
+693,Sales Records,open-source,hr,1337
+694,Employee Directory,third-party,customer,46865
+695,Research Publications,third-party,sales,9504
+696,Sales Records,external,weather,16457
+697,Security Alerts,internal,sales,25258
+698,Cyber Logs,external,sales,21457
+699,Sales Records,open-source,alerts,4274
+700,Customer Feedback,external,network,12218
+701,IoT Sensor Data,external,alerts,48601
+702,Customer Feedback,third-party,hr,21491
+703,Financial Transactions,internal,sales,39354
+704,IoT Sensor Data,third-party,alerts,28889
+705,Weather Data,open-source,research,41180
+706,Customer Feedback,external,research,42353
+707,Security Alerts,internal,customer,24058
+708,Sales Records,open-source,weather,36555
+709,Weather Data,internal,research,30214
+710,Weather Data,internal,sales,8141
+711,Sales Records,open-source,sales,3548
+712,Cyber Logs,external,sensor,21300
+713,Customer Feedback,third-party,security,41155
+714,Customer Feedback,external,research,32923
+715,Customer Feedback,internal,sensor,24133
+716,Research Publications,third-party,sales,27291
+717,IoT Sensor Data,third-party,alerts,49315
+718,Research Publications,internal,weather,1366
+719,Sales Records,open-source,sales,20307
+720,Employee Directory,internal,sales,32068
+721,Customer Feedback,external,hr,5933
+722,Employee Directory,internal,hr,13573
+723,Security Alerts,external,sales,34757
+724,Network Traffic,open-source,customer,3004
+725,Financial Transactions,internal,sales,23090
+726,Weather Data,open-source,research,17881
+727,Customer Feedback,internal,weather,11785
+728,Security Alerts,internal,alerts,41856
+729,Weather Data,external,security,6441
+730,Network Traffic,third-party,finance,2746
+731,Employee Directory,internal,weather,32253
+732,Employee Directory,third-party,hr,998
+733,Network Traffic,third-party,research,7818
+734,Research Publications,external,customer,9113
+735,Research Publications,open-source,finance,31843
+736,Financial Transactions,open-source,research,48931
+737,Research Publications,external,alerts,31754
+738,Network Traffic,external,network,3281
+739,Cyber Logs,third-party,customer,38886
+740,IoT Sensor Data,open-source,sensor,2537
+741,Network Traffic,open-source,alerts,39263
+742,Research Publications,external,customer,10826
+743,Financial Transactions,open-source,network,27232
+744,Customer Feedback,external,finance,17548
+745,Security Alerts,internal,research,46693
+746,Financial Transactions,internal,hr,36646
+747,Research Publications,external,sensor,22297
+748,Cyber Logs,third-party,alerts,25170
+749,Security Alerts,third-party,hr,30988
+750,Security Alerts,third-party,customer,2145

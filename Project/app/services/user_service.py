@@ -2,7 +2,7 @@ import bcrypt
 from app.data.db import connect_database
 from app.data.users import get_user_by_username, insert_user
 
-def register_user(username, password):
+def RegisterUser(username, password):
     """Register new user with password hashing."""
     conn = connect_database()
     cursor = conn.cursor()
@@ -23,15 +23,14 @@ def register_user(username, password):
     insert_user(username, password_hash)
     return True, f"User '{username}' registered successfully."
 
-def login_user(username, password):
+def LoginUser(username, password):
     """Authenticate user."""
     user = get_user_by_username(username)
     if not user:
         return False, "User not found."
     
     # Verify password
-    stored_hash = user[2]  # password_hash column
+    stored_hash = user[1]  # password_hash column
     if bcrypt.checkpw(password.encode('utf-8'), stored_hash.encode('utf-8')):
         return True, f"Login successful!"
     return False, "Incorrect password."
-

@@ -1,0 +1,801 @@
+id,title,severity,status,date
+1,DDoS attack,medium,resolved,2023-01-17
+2,Phishing email detected,medium,open,2024-04-09
+3,Data breach,high,open,2023-12-08
+4,Zero-day exploit activity,medium,investigating,2023-01-05
+5,Firewall breach,critical,open,2023-06-08
+6,Suspicious login,low,open,2024-10-05
+7,Zero-day exploit activity,critical,open,2023-03-30
+8,Phishing email detected,medium,open,2023-04-11
+9,Firewall breach,medium,open,2024-07-13
+10,Data breach,high,open,2024-03-01
+11,Suspicious login,medium,resolved,2023-10-26
+12,Malware infection,medium,resolved,2024-03-18
+13,Suspicious login,high,open,2024-03-01
+14,Unauthorized access attempt,low,open,2024-06-08
+15,Unauthorized access attempt,high,investigating,2023-05-21
+16,Malware infection,critical,open,2024-04-19
+17,Firewall breach,low,open,2023-04-03
+18,Data breach,low,open,2023-11-22
+19,Firewall breach,low,open,2023-07-18
+20,Data breach,critical,open,2023-04-30
+21,SQL injection attempt,medium,open,2023-08-11
+22,Phishing email detected,high,open,2023-09-29
+23,Suspicious login,medium,open,2023-01-13
+24,Firewall breach,high,open,2023-01-03
+25,Ransomware detected,low,investigating,2024-09-28
+26,Malware infection,critical,open,2024-02-21
+27,Ransomware detected,critical,open,2023-07-29
+28,DDoS attack,high,open,2023-12-01
+29,Data breach,medium,resolved,2023-08-08
+30,Malware infection,high,open,2024-11-15
+31,Zero-day exploit activity,low,investigating,2023-01-03
+32,Malware infection,medium,open,2023-05-22
+33,Unauthorized access attempt,high,open,2024-08-03
+34,Unauthorized access attempt,critical,investigating,2024-04-12
+35,Zero-day exploit activity,high,open,2024-04-26
+36,SQL injection attempt,critical,open,2023-12-05
+37,Suspicious login,medium,open,2023-09-25
+38,Malware infection,high,open,2024-04-02
+39,Suspicious login,critical,open,2024-12-01
+40,Phishing email detected,low,open,2024-06-23
+41,Suspicious login,medium,open,2024-08-18
+42,Data breach,medium,open,2023-12-20
+43,Phishing email detected,medium,resolved,2024-07-13
+44,DDoS attack,low,open,2023-08-27
+45,Ransomware detected,low,resolved,2024-07-26
+46,Unauthorized access attempt,medium,open,2024-08-10
+47,Malware infection,high,open,2023-05-20
+48,DDoS attack,medium,open,2023-10-30
+49,Data breach,critical,open,2023-05-05
+50,Zero-day exploit activity,low,open,2024-01-16
+51,Phishing email detected,medium,open,2023-12-09
+52,Phishing email detected,low,open,2023-11-24
+53,Zero-day exploit activity,low,open,2023-07-29
+54,DDoS attack,low,open,2024-02-22
+55,Zero-day exploit activity,critical,open,2024-11-14
+56,SQL injection attempt,medium,open,2023-07-22
+57,Malware infection,low,open,2024-08-18
+58,Suspicious login,critical,resolved,2024-03-18
+59,SQL injection attempt,medium,open,2024-05-20
+60,Firewall breach,medium,resolved,2024-01-21
+61,DDoS attack,critical,open,2024-01-24
+62,DDoS attack,high,open,2024-08-20
+63,Data breach,low,investigating,2024-01-21
+64,Suspicious login,critical,investigating,2024-07-24
+65,Unauthorized access attempt,medium,open,2024-07-11
+66,Malware infection,critical,open,2023-06-05
+67,Unauthorized access attempt,high,open,2024-08-21
+68,Firewall breach,low,investigating,2023-06-09
+69,Suspicious login,high,open,2023-01-31
+70,Phishing email detected,critical,open,2024-06-02
+71,Suspicious login,medium,open,2024-02-22
+72,Malware infection,medium,open,2023-07-07
+73,Phishing email detected,high,open,2024-04-08
+74,SQL injection attempt,low,open,2023-08-07
+75,Zero-day exploit activity,high,open,2023-09-23
+76,Unauthorized access attempt,low,investigating,2023-01-17
+77,Suspicious login,medium,open,2024-07-17
+78,DDoS attack,low,open,2023-12-27
+79,Suspicious login,medium,open,2024-01-06
+80,Zero-day exploit activity,low,open,2023-08-16
+81,Malware infection,low,resolved,2024-10-24
+82,Data breach,medium,resolved,2023-08-12
+83,Zero-day exploit activity,low,open,2024-10-19
+84,Firewall breach,low,resolved,2023-06-02
+85,Data breach,medium,resolved,2023-04-09
+86,Malware infection,low,investigating,2024-07-30
+87,Firewall breach,critical,open,2024-02-17
+88,Data breach,critical,resolved,2023-06-24
+89,Firewall breach,low,open,2023-09-07
+90,Unauthorized access attempt,low,open,2024-01-15
+91,DDoS attack,critical,open,2024-08-06
+92,Malware infection,critical,open,2024-06-19
+93,Data breach,low,open,2023-10-11
+94,Unauthorized access attempt,low,open,2023-07-16
+95,Firewall breach,medium,open,2024-09-10
+96,Phishing email detected,medium,open,2023-11-07
+97,DDoS attack,low,open,2024-08-06
+98,Unauthorized access attempt,high,open,2023-03-28
+99,Data breach,high,open,2024-06-05
+100,Firewall breach,high,resolved,2024-01-18
+101,Phishing email detected,critical,investigating,2023-09-05
+102,Phishing email detected,medium,open,2024-09-29
+103,Phishing email detected,low,resolved,2023-06-11
+104,Suspicious login,high,open,2023-02-25
+105,Unauthorized access attempt,high,resolved,2023-10-19
+106,Zero-day exploit activity,low,open,2024-05-08
+107,Malware infection,medium,open,2023-01-11
+108,Firewall breach,critical,resolved,2024-03-08
+109,Suspicious login,low,open,2023-05-27
+110,Unauthorized access attempt,medium,resolved,2023-08-16
+111,DDoS attack,high,open,2024-08-12
+112,Suspicious login,low,open,2024-03-23
+113,Data breach,critical,investigating,2023-02-01
+114,Data breach,low,open,2024-08-10
+115,Suspicious login,medium,open,2024-10-27
+116,Unauthorized access attempt,low,open,2023-12-05
+117,Malware infection,medium,open,2023-01-19
+118,Suspicious login,critical,investigating,2024-07-20
+119,Firewall breach,low,open,2023-01-30
+120,Unauthorized access attempt,medium,open,2024-02-12
+121,DDoS attack,high,open,2024-07-05
+122,Unauthorized access attempt,critical,resolved,2024-04-28
+123,Zero-day exploit activity,high,resolved,2023-02-03
+124,Malware infection,medium,open,2024-03-16
+125,Suspicious login,high,open,2024-08-27
+126,Data breach,medium,resolved,2023-07-18
+127,Data breach,low,open,2024-06-23
+128,Unauthorized access attempt,high,open,2024-02-01
+129,Firewall breach,critical,open,2024-09-22
+130,Unauthorized access attempt,medium,open,2024-02-24
+131,Unauthorized access attempt,medium,open,2023-07-31
+132,Firewall breach,low,open,2024-04-14
+133,Unauthorized access attempt,medium,open,2024-11-25
+134,Malware infection,critical,open,2024-02-09
+135,Unauthorized access attempt,critical,resolved,2024-01-07
+136,DDoS attack,critical,open,2023-04-18
+137,Unauthorized access attempt,medium,investigating,2024-08-23
+138,Malware infection,low,open,2023-01-11
+139,Unauthorized access attempt,high,open,2023-03-05
+140,DDoS attack,low,open,2024-06-16
+141,SQL injection attempt,high,resolved,2023-05-03
+142,Zero-day exploit activity,low,resolved,2024-09-06
+143,Firewall breach,low,open,2024-04-22
+144,SQL injection attempt,critical,open,2023-07-01
+145,Firewall breach,high,investigating,2024-01-26
+146,Suspicious login,low,open,2023-08-06
+147,Phishing email detected,critical,open,2023-02-03
+148,Malware infection,medium,investigating,2023-07-25
+149,Firewall breach,high,open,2024-03-30
+150,Malware infection,low,resolved,2024-07-14
+151,Firewall breach,critical,open,2024-10-29
+152,Malware infection,low,open,2023-08-28
+153,Malware infection,medium,open,2023-07-19
+154,SQL injection attempt,low,open,2023-12-23
+155,Ransomware detected,medium,open,2024-11-27
+156,Ransomware detected,critical,investigating,2023-08-09
+157,Firewall breach,low,open,2024-11-05
+158,Suspicious login,medium,open,2023-12-24
+159,Unauthorized access attempt,high,open,2024-02-08
+160,Ransomware detected,medium,open,2023-05-24
+161,SQL injection attempt,critical,investigating,2024-11-05
+162,Zero-day exploit activity,high,open,2023-07-11
+163,Ransomware detected,critical,open,2024-01-12
+164,Firewall breach,medium,investigating,2024-07-23
+165,SQL injection attempt,medium,investigating,2023-03-19
+166,Phishing email detected,critical,open,2023-03-06
+167,Suspicious login,medium,open,2023-06-30
+168,Firewall breach,high,open,2023-07-22
+169,Phishing email detected,critical,open,2024-08-13
+170,Suspicious login,medium,resolved,2023-10-24
+171,DDoS attack,medium,investigating,2023-07-28
+172,Phishing email detected,critical,open,2023-05-15
+173,Data breach,low,resolved,2024-08-19
+174,SQL injection attempt,high,open,2024-11-27
+175,Data breach,high,open,2023-01-18
+176,Suspicious login,medium,resolved,2023-08-13
+177,SQL injection attempt,medium,investigating,2024-10-15
+178,Zero-day exploit activity,critical,investigating,2023-02-23
+179,Malware infection,medium,open,2023-11-03
+180,DDoS attack,high,investigating,2023-07-20
+181,Data breach,high,open,2024-11-04
+182,DDoS attack,medium,resolved,2023-06-24
+183,Zero-day exploit activity,high,investigating,2024-05-02
+184,Unauthorized access attempt,low,resolved,2023-06-06
+185,Phishing email detected,low,open,2023-05-28
+186,Data breach,critical,open,2023-05-09
+187,Suspicious login,high,open,2023-06-23
+188,Phishing email detected,medium,investigating,2023-07-09
+189,SQL injection attempt,high,open,2023-06-04
+190,Phishing email detected,critical,open,2023-12-17
+191,Data breach,critical,open,2024-02-16
+192,Suspicious login,medium,resolved,2023-10-24
+193,Data breach,low,resolved,2023-05-10
+194,Ransomware detected,high,open,2023-03-26
+195,Firewall breach,medium,resolved,2024-04-06
+196,DDoS attack,high,open,2023-07-05
+197,Unauthorized access attempt,medium,open,2023-07-12
+198,Malware infection,low,open,2023-03-11
+199,Suspicious login,medium,resolved,2023-04-26
+200,Phishing email detected,medium,open,2023-03-16
+201,Unauthorized access attempt,medium,open,2024-08-06
+202,Data breach,medium,open,2023-08-12
+203,Phishing email detected,high,investigating,2023-12-20
+204,Suspicious login,medium,open,2024-09-26
+205,Data breach,critical,open,2023-05-27
+206,Firewall breach,high,open,2024-09-03
+207,SQL injection attempt,high,open,2023-03-29
+208,Ransomware detected,high,open,2024-01-20
+209,Phishing email detected,high,open,2024-10-31
+210,Unauthorized access attempt,low,open,2024-10-02
+211,Suspicious login,critical,open,2023-03-26
+212,Malware infection,medium,resolved,2024-06-05
+213,Phishing email detected,high,investigating,2024-07-05
+214,DDoS attack,high,open,2023-09-22
+215,Malware infection,critical,open,2024-11-02
+216,Unauthorized access attempt,critical,resolved,2024-10-08
+217,Zero-day exploit activity,low,open,2023-05-21
+218,Firewall breach,critical,open,2024-11-30
+219,Suspicious login,low,resolved,2024-11-10
+220,Unauthorized access attempt,medium,open,2023-09-08
+221,Unauthorized access attempt,critical,open,2024-04-25
+222,Data breach,low,investigating,2024-03-24
+223,SQL injection attempt,critical,open,2024-01-01
+224,Ransomware detected,critical,open,2023-05-13
+225,DDoS attack,critical,open,2024-10-02
+226,Suspicious login,critical,resolved,2023-10-12
+227,Firewall breach,low,investigating,2024-07-13
+228,Zero-day exploit activity,high,open,2023-08-17
+229,Firewall breach,medium,open,2024-10-08
+230,Malware infection,low,resolved,2023-05-07
+231,Phishing email detected,critical,open,2024-10-07
+232,Malware infection,critical,open,2024-02-29
+233,Suspicious login,medium,open,2024-08-26
+234,Suspicious login,low,resolved,2023-12-29
+235,Unauthorized access attempt,low,open,2023-07-14
+236,Malware infection,medium,open,2023-10-01
+237,Unauthorized access attempt,high,open,2023-08-02
+238,Firewall breach,critical,open,2024-01-21
+239,Firewall breach,critical,open,2023-12-25
+240,Firewall breach,high,open,2024-09-12
+241,Zero-day exploit activity,critical,open,2023-04-12
+242,DDoS attack,high,open,2023-10-14
+243,SQL injection attempt,medium,open,2023-01-22
+244,Zero-day exploit activity,medium,open,2024-04-05
+245,Data breach,medium,open,2024-02-15
+246,Zero-day exploit activity,medium,open,2024-02-23
+247,Malware infection,high,open,2023-03-07
+248,Suspicious login,low,open,2023-11-19
+249,SQL injection attempt,high,open,2023-08-06
+250,Firewall breach,critical,open,2024-08-16
+251,Malware infection,critical,resolved,2023-08-03
+252,Ransomware detected,medium,open,2023-11-06
+253,Phishing email detected,critical,resolved,2023-02-26
+254,Malware infection,critical,open,2024-06-23
+255,Firewall breach,critical,open,2023-07-24
+256,Phishing email detected,high,investigating,2024-02-11
+257,Ransomware detected,medium,resolved,2023-04-16
+258,Suspicious login,critical,investigating,2024-06-26
+259,Data breach,critical,open,2023-08-30
+260,Data breach,medium,investigating,2023-07-26
+261,DDoS attack,critical,open,2024-06-11
+262,Zero-day exploit activity,low,open,2024-09-02
+263,SQL injection attempt,high,investigating,2024-06-20
+264,Unauthorized access attempt,critical,investigating,2023-04-03
+265,SQL injection attempt,medium,open,2024-07-20
+266,Malware infection,high,open,2023-02-18
+267,Malware infection,low,open,2023-08-06
+268,Ransomware detected,high,investigating,2024-02-04
+269,Unauthorized access attempt,high,resolved,2024-03-06
+270,Zero-day exploit activity,low,open,2023-07-22
+271,Phishing email detected,high,open,2023-07-28
+272,Unauthorized access attempt,high,open,2023-02-26
+273,Zero-day exploit activity,critical,open,2023-01-17
+274,Malware infection,critical,open,2023-10-17
+275,Data breach,critical,investigating,2024-11-02
+276,Suspicious login,low,open,2024-04-12
+277,SQL injection attempt,critical,open,2023-10-12
+278,DDoS attack,high,open,2024-08-14
+279,DDoS attack,critical,open,2023-06-04
+280,Phishing email detected,medium,open,2024-09-30
+281,Phishing email detected,high,open,2023-11-25
+282,Zero-day exploit activity,medium,open,2023-11-03
+283,Firewall breach,critical,resolved,2024-04-15
+284,Unauthorized access attempt,high,resolved,2024-02-17
+285,Malware infection,critical,resolved,2023-01-22
+286,Zero-day exploit activity,medium,open,2023-05-12
+287,Malware infection,high,open,2024-10-05
+288,Zero-day exploit activity,high,open,2023-08-18
+289,DDoS attack,critical,investigating,2023-07-09
+290,SQL injection attempt,low,open,2023-04-24
+291,Unauthorized access attempt,high,investigating,2023-04-23
+292,Phishing email detected,medium,open,2024-01-19
+293,DDoS attack,medium,open,2023-05-10
+294,Phishing email detected,low,open,2024-02-12
+295,Firewall breach,high,open,2023-01-13
+296,Phishing email detected,high,open,2024-01-07
+297,Unauthorized access attempt,critical,open,2024-02-19
+298,SQL injection attempt,low,open,2024-09-12
+299,Ransomware detected,medium,open,2023-12-27
+300,SQL injection attempt,medium,open,2024-09-04
+301,Data breach,critical,open,2024-07-24
+302,Firewall breach,medium,open,2023-10-22
+303,Phishing email detected,critical,open,2023-02-07
+304,Unauthorized access attempt,high,open,2024-02-09
+305,DDoS attack,medium,open,2024-10-28
+306,Suspicious login,medium,open,2024-01-02
+307,Zero-day exploit activity,critical,open,2024-01-20
+308,DDoS attack,low,resolved,2023-05-13
+309,Firewall breach,medium,open,2023-07-07
+310,SQL injection attempt,critical,open,2023-07-26
+311,SQL injection attempt,medium,open,2024-02-27
+312,Zero-day exploit activity,medium,open,2023-09-22
+313,SQL injection attempt,high,open,2024-09-03
+314,Ransomware detected,low,open,2024-06-27
+315,DDoS attack,medium,open,2023-11-30
+316,Phishing email detected,medium,open,2024-08-01
+317,SQL injection attempt,high,open,2024-07-31
+318,Data breach,critical,investigating,2023-05-19
+319,DDoS attack,critical,open,2023-08-23
+320,DDoS attack,high,open,2023-10-10
+321,Phishing email detected,critical,investigating,2024-03-19
+322,Phishing email detected,critical,open,2024-04-03
+323,Ransomware detected,medium,open,2024-02-28
+324,SQL injection attempt,high,open,2023-05-18
+325,Malware infection,medium,investigating,2024-04-15
+326,SQL injection attempt,medium,open,2024-02-17
+327,Suspicious login,low,open,2023-06-28
+328,Suspicious login,low,open,2023-09-14
+329,Phishing email detected,critical,investigating,2023-09-22
+330,Zero-day exploit activity,critical,open,2023-12-25
+331,DDoS attack,high,investigating,2024-11-26
+332,Data breach,low,investigating,2023-01-31
+333,Zero-day exploit activity,critical,open,2024-02-04
+334,Data breach,high,open,2024-03-08
+335,Firewall breach,high,open,2024-03-14
+336,Malware infection,high,open,2024-05-03
+337,Ransomware detected,medium,open,2023-12-24
+338,Firewall breach,high,open,2024-09-02
+339,Unauthorized access attempt,critical,open,2024-11-08
+340,Suspicious login,low,open,2024-03-12
+341,Firewall breach,low,open,2023-01-04
+342,Zero-day exploit activity,low,open,2024-06-24
+343,Malware infection,medium,open,2024-07-24
+344,Malware infection,low,open,2023-03-24
+345,Phishing email detected,high,open,2023-12-29
+346,Zero-day exploit activity,high,resolved,2024-03-06
+347,Phishing email detected,medium,resolved,2024-05-29
+348,Zero-day exploit activity,medium,open,2023-06-17
+349,Data breach,medium,open,2023-09-10
+350,Ransomware detected,low,resolved,2023-04-01
+351,SQL injection attempt,low,investigating,2023-04-11
+352,Unauthorized access attempt,low,open,2024-05-24
+353,DDoS attack,low,open,2024-08-10
+354,SQL injection attempt,critical,open,2024-10-08
+355,Phishing email detected,medium,open,2023-03-30
+356,Phishing email detected,critical,open,2024-03-04
+357,DDoS attack,critical,open,2024-01-08
+358,Phishing email detected,critical,open,2023-12-01
+359,Malware infection,high,open,2024-06-26
+360,Malware infection,critical,open,2023-07-27
+361,Malware infection,high,investigating,2024-10-17
+362,Phishing email detected,critical,investigating,2023-10-14
+363,Malware infection,medium,open,2024-01-04
+364,Data breach,critical,open,2023-02-16
+365,Phishing email detected,low,resolved,2024-10-01
+366,Zero-day exploit activity,high,open,2023-10-08
+367,Phishing email detected,low,open,2023-12-01
+368,Zero-day exploit activity,low,open,2023-04-09
+369,Malware infection,medium,open,2023-08-26
+370,Firewall breach,medium,investigating,2023-03-19
+371,Data breach,low,open,2024-03-26
+372,Suspicious login,high,resolved,2023-10-11
+373,Data breach,medium,open,2024-05-19
+374,Malware infection,low,open,2024-05-05
+375,Data breach,critical,open,2024-04-27
+376,Zero-day exploit activity,medium,investigating,2024-08-21
+377,Firewall breach,low,open,2024-02-25
+378,Firewall breach,critical,open,2023-04-20
+379,SQL injection attempt,high,investigating,2024-03-18
+380,Phishing email detected,medium,resolved,2023-06-27
+381,Malware infection,medium,resolved,2024-02-19
+382,DDoS attack,medium,open,2024-03-21
+383,Phishing email detected,medium,open,2023-01-10
+384,Malware infection,critical,open,2023-08-26
+385,Zero-day exploit activity,low,open,2024-10-18
+386,Suspicious login,medium,open,2023-05-08
+387,Zero-day exploit activity,high,open,2023-03-20
+388,Phishing email detected,low,resolved,2023-01-01
+389,Zero-day exploit activity,low,open,2023-11-12
+390,Firewall breach,medium,open,2023-11-18
+391,Malware infection,critical,open,2023-09-09
+392,Firewall breach,medium,open,2023-06-07
+393,Malware infection,critical,open,2023-02-06
+394,DDoS attack,high,open,2023-07-03
+395,Unauthorized access attempt,low,investigating,2024-06-23
+396,Unauthorized access attempt,high,open,2024-01-02
+397,SQL injection attempt,low,investigating,2023-09-28
+398,Zero-day exploit activity,high,resolved,2023-07-20
+399,Firewall breach,low,open,2023-04-25
+400,Data breach,low,investigating,2024-07-11
+401,Suspicious login,medium,open,2023-02-06
+402,SQL injection attempt,critical,open,2023-07-23
+403,Unauthorized access attempt,high,open,2023-08-25
+404,Suspicious login,critical,open,2023-02-03
+405,Unauthorized access attempt,critical,open,2023-05-09
+406,Data breach,high,open,2023-07-28
+407,Malware infection,low,open,2024-02-11
+408,Ransomware detected,low,resolved,2023-04-15
+409,Suspicious login,critical,open,2023-11-21
+410,SQL injection attempt,high,open,2023-08-09
+411,DDoS attack,high,open,2023-03-30
+412,Malware infection,medium,open,2024-10-04
+413,Suspicious login,medium,open,2023-08-11
+414,Unauthorized access attempt,high,open,2023-11-29
+415,SQL injection attempt,low,open,2023-06-13
+416,Ransomware detected,critical,open,2024-02-07
+417,Phishing email detected,high,resolved,2024-10-12
+418,Firewall breach,low,resolved,2023-03-12
+419,Phishing email detected,critical,open,2024-04-28
+420,Ransomware detected,medium,open,2024-02-04
+421,Data breach,medium,open,2024-03-26
+422,SQL injection attempt,low,open,2023-09-27
+423,Ransomware detected,medium,open,2024-09-13
+424,Ransomware detected,critical,open,2024-02-09
+425,Firewall breach,high,open,2024-03-03
+426,Zero-day exploit activity,critical,open,2023-06-21
+427,Zero-day exploit activity,medium,open,2024-03-03
+428,Malware infection,low,resolved,2024-06-07
+429,Suspicious login,medium,investigating,2024-02-28
+430,Malware infection,critical,investigating,2024-06-19
+431,DDoS attack,low,open,2023-04-28
+432,Data breach,high,open,2023-05-22
+433,Ransomware detected,medium,resolved,2024-04-07
+434,Phishing email detected,medium,open,2023-10-08
+435,Suspicious login,critical,open,2024-01-06
+436,Unauthorized access attempt,medium,open,2024-11-27
+437,Malware infection,high,open,2023-08-20
+438,Unauthorized access attempt,critical,open,2023-06-19
+439,Ransomware detected,low,open,2024-11-03
+440,Ransomware detected,medium,investigating,2024-07-15
+441,Suspicious login,medium,open,2024-06-09
+442,Suspicious login,low,open,2023-05-23
+443,Firewall breach,critical,open,2023-02-21
+444,Malware infection,critical,open,2024-06-01
+445,DDoS attack,high,open,2023-12-07
+446,Phishing email detected,low,open,2024-03-08
+447,Data breach,low,investigating,2023-11-15
+448,Unauthorized access attempt,critical,resolved,2023-03-01
+449,Zero-day exploit activity,critical,open,2024-05-30
+450,Phishing email detected,high,investigating,2023-08-20
+451,SQL injection attempt,critical,open,2023-12-19
+452,Suspicious login,high,open,2024-01-06
+453,SQL injection attempt,high,open,2024-04-23
+454,Phishing email detected,critical,investigating,2023-07-07
+455,Ransomware detected,medium,open,2023-05-29
+456,Ransomware detected,low,open,2024-08-22
+457,Unauthorized access attempt,low,open,2023-07-04
+458,Unauthorized access attempt,medium,resolved,2023-05-19
+459,Firewall breach,high,investigating,2023-09-18
+460,DDoS attack,critical,resolved,2023-12-10
+461,Firewall breach,critical,open,2023-06-14
+462,DDoS attack,critical,open,2023-03-08
+463,Malware infection,medium,open,2023-07-15
+464,SQL injection attempt,low,resolved,2024-11-25
+465,Zero-day exploit activity,critical,open,2024-01-30
+466,Data breach,low,open,2024-07-08
+467,DDoS attack,critical,investigating,2023-04-29
+468,Phishing email detected,low,open,2024-11-17
+469,DDoS attack,low,investigating,2023-09-24
+470,DDoS attack,medium,resolved,2024-09-20
+471,DDoS attack,critical,open,2024-09-01
+472,Unauthorized access attempt,critical,open,2023-03-22
+473,DDoS attack,critical,investigating,2024-07-08
+474,Unauthorized access attempt,low,resolved,2024-08-03
+475,DDoS attack,critical,open,2024-01-08
+476,Zero-day exploit activity,medium,open,2023-07-23
+477,Unauthorized access attempt,high,open,2024-02-07
+478,DDoS attack,high,open,2024-07-13
+479,Unauthorized access attempt,low,open,2024-10-17
+480,Zero-day exploit activity,critical,open,2023-12-21
+481,Firewall breach,critical,investigating,2023-03-06
+482,Unauthorized access attempt,high,resolved,2024-04-05
+483,Phishing email detected,critical,resolved,2024-07-07
+484,SQL injection attempt,medium,open,2023-12-16
+485,Suspicious login,critical,open,2023-01-07
+486,Unauthorized access attempt,critical,open,2023-04-17
+487,DDoS attack,critical,open,2024-09-08
+488,DDoS attack,low,open,2024-12-01
+489,Firewall breach,critical,open,2024-04-23
+490,Phishing email detected,medium,open,2023-12-17
+491,Data breach,low,resolved,2024-02-09
+492,Phishing email detected,critical,open,2024-09-27
+493,Suspicious login,high,open,2023-04-12
+494,Malware infection,high,investigating,2024-03-11
+495,Ransomware detected,critical,open,2023-09-14
+496,Unauthorized access attempt,high,resolved,2024-05-16
+497,Unauthorized access attempt,high,open,2023-11-10
+498,Zero-day exploit activity,critical,open,2023-09-11
+499,Malware infection,medium,resolved,2023-09-20
+500,SQL injection attempt,high,investigating,2023-02-02
+501,Suspicious login,low,open,2024-09-20
+502,SQL injection attempt,high,open,2023-12-25
+503,Suspicious login,low,open,2024-05-18
+504,DDoS attack,critical,open,2024-01-16
+505,Data breach,medium,investigating,2024-03-27
+506,Suspicious login,high,open,2024-05-17
+507,Zero-day exploit activity,high,open,2024-05-16
+508,Malware infection,critical,open,2023-12-29
+509,Unauthorized access attempt,high,resolved,2024-08-01
+510,Unauthorized access attempt,critical,open,2024-06-12
+511,Firewall breach,high,investigating,2023-03-09
+512,Data breach,low,open,2023-12-19
+513,Ransomware detected,low,open,2023-09-26
+514,Unauthorized access attempt,high,open,2023-07-12
+515,Malware infection,critical,open,2024-10-10
+516,Unauthorized access attempt,medium,open,2023-07-24
+517,Zero-day exploit activity,critical,resolved,2024-11-10
+518,Ransomware detected,critical,open,2023-05-01
+519,Ransomware detected,critical,investigating,2024-08-24
+520,Ransomware detected,low,investigating,2023-02-07
+521,Ransomware detected,low,open,2023-10-25
+522,Suspicious login,medium,open,2023-12-02
+523,Zero-day exploit activity,critical,open,2024-09-22
+524,Unauthorized access attempt,medium,open,2024-05-05
+525,Unauthorized access attempt,medium,open,2024-06-11
+526,Unauthorized access attempt,medium,investigating,2023-09-11
+527,Suspicious login,low,investigating,2023-11-21
+528,Data breach,high,open,2024-02-01
+529,Firewall breach,low,resolved,2023-12-04
+530,Phishing email detected,high,open,2024-10-21
+531,Malware infection,medium,investigating,2023-10-06
+532,SQL injection attempt,medium,open,2024-01-11
+533,Phishing email detected,high,open,2023-01-18
+534,SQL injection attempt,high,open,2024-05-02
+535,Zero-day exploit activity,critical,open,2024-06-13
+536,Zero-day exploit activity,high,open,2024-09-12
+537,Data breach,high,open,2024-01-14
+538,Firewall breach,low,open,2023-05-20
+539,Ransomware detected,low,investigating,2023-04-19
+540,Data breach,medium,investigating,2023-10-29
+541,Zero-day exploit activity,low,open,2023-08-29
+542,Zero-day exploit activity,low,resolved,2023-08-23
+543,Unauthorized access attempt,low,investigating,2024-09-18
+544,Ransomware detected,critical,open,2024-04-17
+545,Malware infection,low,resolved,2024-05-21
+546,SQL injection attempt,low,open,2023-02-26
+547,Phishing email detected,medium,open,2024-08-07
+548,Phishing email detected,high,resolved,2023-04-06
+549,Suspicious login,low,open,2024-09-30
+550,DDoS attack,critical,open,2023-04-19
+551,Zero-day exploit activity,low,investigating,2024-02-05
+552,Unauthorized access attempt,high,resolved,2023-02-20
+553,SQL injection attempt,high,open,2024-03-07
+554,Ransomware detected,low,open,2024-05-27
+555,Unauthorized access attempt,medium,open,2024-01-02
+556,Zero-day exploit activity,low,investigating,2024-08-25
+557,Unauthorized access attempt,low,investigating,2023-07-10
+558,Malware infection,critical,open,2023-10-01
+559,DDoS attack,low,open,2023-02-23
+560,Zero-day exploit activity,high,open,2023-08-10
+561,Suspicious login,medium,investigating,2024-05-13
+562,Suspicious login,high,open,2024-08-13
+563,Ransomware detected,high,open,2023-09-17
+564,Data breach,medium,open,2024-11-27
+565,Ransomware detected,low,open,2024-06-02
+566,DDoS attack,low,open,2023-09-01
+567,Ransomware detected,medium,open,2023-06-18
+568,Malware infection,medium,open,2024-04-06
+569,Ransomware detected,low,resolved,2023-03-11
+570,Zero-day exploit activity,medium,resolved,2023-05-27
+571,Ransomware detected,high,investigating,2023-11-23
+572,Phishing email detected,high,open,2024-09-21
+573,Data breach,critical,open,2023-10-16
+574,Malware infection,low,investigating,2024-02-17
+575,Malware infection,low,open,2024-11-12
+576,Malware infection,critical,open,2023-07-29
+577,Zero-day exploit activity,medium,open,2024-07-03
+578,Zero-day exploit activity,high,open,2023-04-27
+579,Suspicious login,high,open,2023-09-19
+580,Data breach,critical,open,2023-10-18
+581,Firewall breach,high,investigating,2024-07-29
+582,Suspicious login,critical,open,2023-03-26
+583,Firewall breach,medium,open,2024-07-08
+584,Firewall breach,low,investigating,2023-11-07
+585,Malware infection,low,investigating,2023-11-03
+586,Ransomware detected,medium,open,2023-06-25
+587,Data breach,critical,open,2023-03-12
+588,Firewall breach,low,investigating,2024-04-21
+589,Malware infection,high,resolved,2023-10-31
+590,SQL injection attempt,low,open,2024-12-01
+591,DDoS attack,critical,open,2023-02-05
+592,Suspicious login,critical,resolved,2024-03-29
+593,SQL injection attempt,critical,open,2023-05-29
+594,Data breach,low,open,2024-09-20
+595,Phishing email detected,low,open,2023-09-03
+596,Suspicious login,high,open,2024-05-09
+597,Firewall breach,critical,resolved,2023-12-22
+598,Data breach,low,resolved,2024-09-04
+599,Malware infection,medium,open,2023-08-10
+600,Unauthorized access attempt,critical,open,2024-08-27
+601,Unauthorized access attempt,medium,resolved,2023-08-17
+602,Phishing email detected,low,open,2023-04-10
+603,Malware infection,medium,open,2023-05-01
+604,Ransomware detected,low,open,2024-02-19
+605,Suspicious login,medium,investigating,2024-01-28
+606,Suspicious login,low,open,2024-11-01
+607,SQL injection attempt,low,open,2023-07-19
+608,Data breach,medium,open,2023-10-22
+609,Suspicious login,medium,open,2023-07-05
+610,Suspicious login,high,open,2023-05-08
+611,DDoS attack,medium,open,2024-01-13
+612,Phishing email detected,high,open,2023-04-13
+613,Phishing email detected,critical,resolved,2024-07-03
+614,SQL injection attempt,low,investigating,2023-04-26
+615,Suspicious login,low,open,2023-02-22
+616,Firewall breach,medium,investigating,2023-01-18
+617,Phishing email detected,medium,open,2024-04-19
+618,Zero-day exploit activity,high,open,2024-10-19
+619,DDoS attack,low,open,2023-01-23
+620,Suspicious login,low,open,2024-07-29
+621,Data breach,high,investigating,2024-11-26
+622,Unauthorized access attempt,medium,open,2023-07-18
+623,SQL injection attempt,critical,resolved,2024-01-16
+624,Phishing email detected,high,open,2023-04-11
+625,Malware infection,high,open,2023-07-14
+626,Malware infection,low,resolved,2023-02-19
+627,Unauthorized access attempt,medium,open,2023-02-12
+628,DDoS attack,high,open,2024-10-09
+629,SQL injection attempt,critical,open,2024-02-23
+630,SQL injection attempt,high,open,2024-10-21
+631,Ransomware detected,low,open,2024-05-21
+632,Zero-day exploit activity,critical,resolved,2023-06-23
+633,Suspicious login,low,investigating,2023-06-25
+634,Phishing email detected,medium,open,2023-08-17
+635,DDoS attack,low,resolved,2023-11-28
+636,Data breach,low,open,2023-10-21
+637,Phishing email detected,high,resolved,2023-02-25
+638,Malware infection,critical,resolved,2023-12-01
+639,DDoS attack,critical,open,2023-08-11
+640,Malware infection,high,open,2024-08-28
+641,Ransomware detected,low,open,2024-01-11
+642,Data breach,critical,open,2023-06-01
+643,Ransomware detected,high,open,2024-04-27
+644,SQL injection attempt,high,resolved,2023-02-21
+645,DDoS attack,medium,open,2023-05-05
+646,Ransomware detected,critical,open,2024-03-27
+647,Malware infection,critical,open,2024-02-01
+648,Firewall breach,critical,resolved,2024-06-10
+649,Zero-day exploit activity,critical,open,2023-10-27
+650,SQL injection attempt,medium,open,2023-03-08
+651,Malware infection,critical,open,2024-03-01
+652,SQL injection attempt,critical,open,2024-03-20
+653,Zero-day exploit activity,high,open,2023-10-02
+654,Phishing email detected,medium,resolved,2023-01-31
+655,Phishing email detected,critical,open,2024-05-29
+656,SQL injection attempt,high,open,2023-03-02
+657,Firewall breach,critical,open,2024-05-23
+658,Suspicious login,critical,resolved,2023-09-23
+659,Ransomware detected,high,open,2024-11-18
+660,DDoS attack,low,investigating,2023-12-16
+661,Ransomware detected,high,open,2023-12-18
+662,Unauthorized access attempt,medium,open,2024-10-21
+663,Unauthorized access attempt,medium,open,2024-12-01
+664,Zero-day exploit activity,high,open,2024-11-11
+665,Malware infection,high,resolved,2023-09-30
+666,Firewall breach,high,open,2023-12-02
+667,Firewall breach,medium,open,2024-10-19
+668,Firewall breach,low,resolved,2024-04-17
+669,Suspicious login,medium,resolved,2024-10-24
+670,Data breach,low,open,2024-10-27
+671,Phishing email detected,low,open,2023-09-22
+672,Unauthorized access attempt,low,open,2023-07-13
+673,Suspicious login,critical,open,2023-07-12
+674,Zero-day exploit activity,high,open,2024-06-03
+675,Firewall breach,high,open,2024-02-01
+676,Zero-day exploit activity,high,resolved,2023-06-30
+677,Data breach,high,open,2023-02-24
+678,SQL injection attempt,critical,investigating,2023-05-04
+679,SQL injection attempt,low,open,2023-04-19
+680,Phishing email detected,high,open,2024-08-22
+681,Phishing email detected,high,resolved,2023-02-04
+682,Suspicious login,medium,investigating,2023-01-08
+683,Unauthorized access attempt,low,open,2023-06-10
+684,Firewall breach,critical,open,2023-04-14
+685,Data breach,critical,open,2024-06-02
+686,Ransomware detected,high,open,2024-05-27
+687,Zero-day exploit activity,critical,investigating,2024-11-22
+688,Phishing email detected,high,open,2023-06-11
+689,Ransomware detected,medium,open,2023-07-16
+690,Firewall breach,low,open,2024-02-18
+691,Unauthorized access attempt,low,open,2024-07-03
+692,Data breach,high,open,2023-01-05
+693,Unauthorized access attempt,low,open,2023-12-04
+694,Unauthorized access attempt,critical,open,2023-01-26
+695,Firewall breach,high,open,2024-03-13
+696,Zero-day exploit activity,low,investigating,2023-04-10
+697,DDoS attack,low,open,2023-03-24
+698,Unauthorized access attempt,medium,open,2024-03-30
+699,Malware infection,high,open,2023-06-22
+700,Unauthorized access attempt,low,open,2023-03-12
+701,Phishing email detected,critical,open,2023-04-04
+702,DDoS attack,critical,open,2024-04-26
+703,Firewall breach,medium,open,2024-09-30
+704,SQL injection attempt,medium,open,2023-02-25
+705,Firewall breach,low,open,2024-05-25
+706,SQL injection attempt,low,open,2023-07-02
+707,DDoS attack,medium,open,2023-12-05
+708,Zero-day exploit activity,low,open,2024-08-09
+709,Unauthorized access attempt,low,open,2023-11-06
+710,Suspicious login,low,resolved,2023-09-17
+711,DDoS attack,medium,open,2024-09-26
+712,Phishing email detected,high,open,2023-08-30
+713,Unauthorized access attempt,low,open,2023-03-26
+714,Malware infection,low,open,2024-01-15
+715,DDoS attack,critical,open,2024-04-09
+716,Phishing email detected,high,open,2023-01-04
+717,Data breach,high,resolved,2024-02-17
+718,Suspicious login,low,resolved,2023-07-08
+719,Unauthorized access attempt,medium,open,2024-02-26
+720,Phishing email detected,high,investigating,2024-07-17
+721,Zero-day exploit activity,critical,open,2023-03-03
+722,SQL injection attempt,low,open,2024-10-26
+723,SQL injection attempt,medium,open,2023-04-20
+724,Malware infection,low,investigating,2024-09-11
+725,Suspicious login,medium,open,2024-11-21
+726,Suspicious login,low,open,2024-03-28
+727,SQL injection attempt,medium,open,2024-07-30
+728,Malware infection,critical,open,2024-10-30
+729,DDoS attack,low,open,2024-07-28
+730,Malware infection,medium,open,2024-07-08
+731,Phishing email detected,high,investigating,2023-03-26
+732,SQL injection attempt,low,open,2023-05-02
+733,Firewall breach,medium,open,2024-04-09
+734,SQL injection attempt,medium,open,2023-04-23
+735,Firewall breach,critical,open,2023-05-03
+736,Ransomware detected,low,open,2023-02-11
+737,Phishing email detected,critical,resolved,2023-11-09
+738,Malware infection,low,resolved,2024-11-05
+739,DDoS attack,high,investigating,2024-07-03
+740,Firewall breach,medium,investigating,2024-01-24
+741,DDoS attack,critical,open,2024-03-27
+742,Phishing email detected,critical,open,2023-03-19
+743,Unauthorized access attempt,high,open,2023-01-26
+744,Data breach,critical,open,2023-05-20
+745,Suspicious login,critical,resolved,2023-07-26
+746,Data breach,low,open,2024-11-21
+747,Firewall breach,critical,investigating,2024-03-22
+748,Unauthorized access attempt,critical,open,2023-03-05
+749,DDoS attack,high,resolved,2023-08-11
+750,Ransomware detected,high,resolved,2024-08-29
+751,Malware infection,critical,investigating,2024-05-14
+752,Unauthorized access attempt,critical,open,2024-05-15
+753,Data breach,critical,open,2024-09-08
+754,Firewall breach,medium,open,2023-03-05
+755,DDoS attack,critical,open,2024-07-20
+756,SQL injection attempt,critical,open,2023-08-08
+757,Ransomware detected,low,open,2023-12-24
+758,Zero-day exploit activity,critical,open,2024-02-17
+759,Suspicious login,low,open,2024-04-13
+760,Unauthorized access attempt,critical,resolved,2023-01-16
+761,Malware infection,low,open,2024-03-23
+762,Data breach,high,open,2023-10-20
+763,Zero-day exploit activity,medium,open,2023-11-26
+764,Suspicious login,high,resolved,2024-04-22
+765,Zero-day exploit activity,high,open,2024-05-16
+766,Phishing email detected,low,open,2023-07-22
+767,Zero-day exploit activity,low,open,2023-04-30
+768,Suspicious login,medium,open,2023-02-14
+769,Ransomware detected,low,open,2023-12-08
+770,Unauthorized access attempt,high,open,2023-04-11
+771,DDoS attack,high,resolved,2023-02-26
+772,SQL injection attempt,high,open,2023-02-16
+773,Malware infection,high,open,2024-09-07
+774,SQL injection attempt,medium,resolved,2023-09-27
+775,Unauthorized access attempt,low,resolved,2023-12-19
+776,Suspicious login,low,open,2024-04-17
+777,SQL injection attempt,critical,open,2024-11-25
+778,SQL injection attempt,high,open,2024-02-29
+779,DDoS attack,low,open,2023-09-01
+780,Suspicious login,critical,open,2024-09-26
+781,SQL injection attempt,critical,open,2024-07-30
+782,Zero-day exploit activity,high,resolved,2024-09-17
+783,Suspicious login,low,open,2023-11-20
+784,Data breach,high,open,2024-10-22
+785,Phishing email detected,medium,open,2023-05-27
+786,Firewall breach,medium,investigating,2023-01-20
+787,Data breach,medium,open,2024-07-06
+788,Zero-day exploit activity,high,open,2023-07-30
+789,SQL injection attempt,medium,open,2024-10-27
+790,Data breach,critical,open,2023-07-24
+791,Malware infection,high,open,2024-09-08
+792,Data breach,critical,open,2024-05-08
+793,Zero-day exploit activity,medium,open,2024-03-26
+794,Malware infection,low,open,2023-07-16
+795,Ransomware detected,low,open,2023-05-08
+796,SQL injection attempt,low,open,2023-06-27
+797,Suspicious login,high,open,2024-01-03
+798,Phishing email detected,critical,open,2023-09-06
+799,Unauthorized access attempt,high,open,2024-07-06
+800,Ransomware detected,critical,open,2023-09-12

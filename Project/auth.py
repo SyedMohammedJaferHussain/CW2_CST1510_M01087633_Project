@@ -1,6 +1,4 @@
 import bcrypt
-import os
-
 USER_DATA_FILE: str = "users.txt"
 
 def HashPassword(plainText: str) -> str:
@@ -128,9 +126,9 @@ def DisplayMenu():
     print("[3] Exit")
     print("-"*50)
     
-    
+"""    
 def Main():
-    """Main program loop."""
+    Main program loop.
     print("\nWelcome to the Week 7 Authentication System!")
 
     while True:
@@ -189,7 +187,7 @@ def Main():
    
 if __name__ == "__main__":
     Main()         
-"""
+
 test_password = "SecurePassword123"
 # Test hashing
 hashed = HashPassword(test_password)
