@@ -1,5 +1,6 @@
 import streamlit as st
 import app.services.user_service as LoginRegister
+import auth 
 st.set_page_config(page_title="Login / Register", page_icon="🔑", layout="centered")
 
 # ---------- Initialise session state ----------
@@ -18,9 +19,9 @@ st.title("🔐 Welcome")
 # If already logged in, go straight to dashboard (optional)
 if st.session_state.logged_in:
     st.success(f"Already logged in as **{st.session_state.username}**.")
-    if st.button("Go to dashboard"):
+    if st.button("Go to cyber analytics"):
         # Use the official navigation API to switch pages
-        st.switch_page("pages/1_Dashboard.py")  # path is relative to Home.py :contentReference[oaicite:1]{index=1}
+        st.switch_page("pages/1_Cyber Analytics.py")  # path is relative to Home.py :contentReference[oaicite:1]{index=1}
     st.stop()  # Don’t show login/register again
 
 
@@ -40,10 +41,10 @@ with tab_login:
         if loginSuccess[0]:
             st.session_state.logged_in = True
             st.session_state.username = login_username
-            st.success(f"{loginSuccess[0]}\nWelcome back, {login_username}! ")
+            st.success(f"Welcome back, {login_username}! ")
 
             # Redirect to dashboard page
-            st.switch_page("pages/1_Dashboard.py")
+            st.switch_page("pages/1_Cyber Analytics.py")
         else:
             st.error(loginSuccess[1])
 
@@ -63,9 +64,17 @@ with tab_register:
         elif new_password != confirm_password:
             st.error("Passwords do not match.")
         
+        checkValidName: tuple = auth.ValidateUserName(new_username)
+        checkValidPWrd: tuple = auth.ValidatePassWd(new_password, confirm_password)
+        if not checkValidName[0]:
+            st.error(checkValidName[1])
+        if not checkValidPWrd[0]:
+            st.error(checkValidPWrd[1])
+        
         checkRegister: tuple = LoginRegister.RegisterUser(new_username, new_password)
         if not checkRegister[0]: #Failure
             st.error(checkRegister[1])
+            
         else:
             st.session_state.users[new_username] = new_password
             st.success("Account created! You can now log in from the Login tab.")

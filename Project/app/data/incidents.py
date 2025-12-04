@@ -17,20 +17,23 @@ def InsertIncident(date, incident_type, severity, status, description, reported_
     return incident_id
 
 
-def GetAllIncident():
-    """Get all incidents as DataFrame."""
+def GetAllIncidents(filter: str):
+    """
+        Get all incidents as DataFrame.
+        Takes filter: str as parameter and filters incidents
+    """
     conn = connect_database()
     df = pd.read_sql_query(
-        "SELECT * FROM cyber_incidents ORDER BY id DESC",
+        f"SELECT * FROM cyber_incidents ORDER BY id DESC WHERE {filter}",
         conn
     )
     conn.close()
     return df
 
 
-def TotalIncidents() -> int:
+def TotalIncidents(filter: str) -> int:
     conn = connect_database()
-    query: str = "SELECT * FROM Cyber_Incidents"
+    query: str = f"SELECT * FROM Cyber_Incidents WHERE {filter}"
     totalInc = pd.read_sql_query(query, conn)
     
     return len(totalInc)

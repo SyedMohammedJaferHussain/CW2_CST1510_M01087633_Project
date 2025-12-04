@@ -1,6 +1,6 @@
 from app.data.db import connect_database
 
-def get_user_by_username(username):
+def GetUserByUsername(username):
     """Retrieve user by username."""
     conn = connect_database()
     cursor = conn.cursor()
@@ -13,7 +13,7 @@ def get_user_by_username(username):
     return user
 
 
-def insert_user(username, password_hash, role='user'):
+def InsertUser(username, password_hash, role='user'):
     """Insert new user."""
     conn = connect_database()
     cursor = conn.cursor()

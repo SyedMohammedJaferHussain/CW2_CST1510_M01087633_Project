@@ -61,12 +61,12 @@ def ValidateUserName(userName: str) -> tuple:
     return (False, errorMsg) if not validated else (True, "")
 
 
-def ValidatePassWd(passWd: str) -> tuple:
+def ValidatePassWd(passWd: str, confPWrd: str) -> tuple:
     """
         Validates passWd using various crtieria
         Returns: Tuple with bool and string containing error message for wrong password
     """
-    criteria: dict[bool, str] = {len(passWd) <= 51 and len(passWd) >= 6 : "Length should be between 6 and 50", "_"  in passWd or "@" in passWd: "Must contain special characters"}
+    criteria: dict[bool, str] = {len(passWd) <= 51 and len(passWd) >= 6 : "Length should be between 6 and 50", "_"  in passWd or "@" in passWd: "Must contain special characters", passWd != confPWrd: "Passwords do not match"}
     validated: bool = True
     errorMsg: str = ""
     for condition in criteria:
