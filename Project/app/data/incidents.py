@@ -1,6 +1,7 @@
 import pandas as pd
 from app.data.db import connect_database
 
+
 def InsertIncident(date, incident_type, severity, status, description, reported_by=None):
     """Insert new incident."""
     conn = connect_database()
@@ -21,10 +22,10 @@ def GetIncidentsQuery(filter):
     """
         Returns query with filter if filter exist
     """
-    #if filter:
-        #return f"SELECT * FROM cyber_incidents WHERE {filter}"
+    if filter:
+        return f"SELECT incident_type FROM cyber_incidents WHERE {filter}"
     
-    return "SELECT * FROM cyber_incidents"
+    return "SELECT incident_type FROM cyber_incidents"
 
 
 def GetAllIncidents(filter):
@@ -33,8 +34,8 @@ def GetAllIncidents(filter):
         Takes filter: str as parameter and filters incidents
     """
     conn = connect_database()
-    #query = GetIncidentsQuery(filter)
-    df = pd.read_sql_query("SELECT id, incident_type FROM Cyber_Incidents", conn)
+    query = GetIncidentsQuery(filter)
+    df = pd.read_sql_query(query, conn)
     conn.close()
     
     return df
@@ -46,12 +47,3 @@ def TotalIncidents(filter: str) -> int:
     totalInc = pd.read_sql_query(query, conn)
     
     return len(totalInc)
-
-def TransferCSV():
-    from pathlib import Path
-    import csv
-    conn = connect_database()
-    cursor = conn.cursor()
-    cursor.execute("DELETE FROM Cyber_Incidents WHERE id = 1")
-    conn.commit()
-    conn.close()

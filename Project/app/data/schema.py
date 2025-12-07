@@ -62,16 +62,12 @@ def CreateITTicketsTable(conn):
     cursor = conn.cursor()
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS IT_Tickets (
-            id INTEGER PRIMARY KEY AUTOINCREMENT
-            ticket_id TEXT UNIQUE NOT NULL
-            priority TEXT 
-            status TEXT 
-            category TEX
-            subject TEXT NOT NULL
-            description TEXT
-            created_date TEXT
-            resolved_date TEXT
-            assigned_to TEXT
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            ticket_id TEXT UNIQUE NOT NULL,
+            subject TEXT NOT NULL,
+            priority TEXT,
+            status TEXT,
+            created_date DATE,
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         )
     """)
@@ -85,9 +81,7 @@ def CreateAllTables():
     from pathlib import Path
 
     conn = sqlite3.connect(Path("DATA") / "intelligence_platform.db")
-    #cursor = conn.cursor()
-    #cursor.execute("")
     CreateUsersTable(conn)
     CreateCyberIncidentsTable(conn)
     CreateDatasetsMetadataTable(conn)
-    #CreateITTicketsTable(conn)
+    CreateITTicketsTable(conn)

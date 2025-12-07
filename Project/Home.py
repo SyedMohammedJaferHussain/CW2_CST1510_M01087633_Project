@@ -1,82 +1,94 @@
 import streamlit as st
 import app.services.user_service as LoginRegister
+import app.data.schema as Schema
 import auth
 
-st.set_page_config(page_title="Login / Register", page_icon="🔑", layout="centered")
 
-# ---------- Initialise session state ----------
-if "users" not in st.session_state:
-    # Very simple in-memory "database": {username: password}
-    st.session_state.users = {}
+def LoginCheck() -> None:
+    if "users" not in st.session_state:
+        # Very simple in-memory "database": {username: password}
+        st.session_state.users = {}
 
-if "logged_in" not in st.session_state:
-    st.session_state.logged_in = False
+    if "logged_in" not in st.session_state:
+        st.session_state.logged_in = False
 
-if "username" not in st.session_state:
-    st.session_state.username = ""
-
-st.title("🔐 Welcome")
-
-# If already logged in, go straight to dashboard (optional)
-if st.session_state.logged_in:
-    st.success(f"Already logged in as **{st.session_state.username}**.")
-    if st.button("Go to cyber analytics"):
-        # Use the official navigation API to switch pages
-        st.switch_page("pages/1_Cyber Analytics.py")  # path is relative to Home.py :contentReference[oaicite:1]{index=1}
-    st.stop()  # Don’t show login/register again
+    if "username" not in st.session_state:
+        st.session_state.username = ""
 
 
-# ---------- Tabs: Login / Register ----------
-tab_login, tab_register = st.tabs(["Login", "Register"])
-
-# ----- LOGIN TAB -----
-with tab_login:
-    st.subheader("Login")
-
-    login_username = st.text_input("Username", key="login_username")
-    login_password = st.text_input("Password", type="password", key="login_password")
-
-    if st.button("Log in", type="primary"):
-        # Simple credential check (for teaching only – not secure!)
-        loginSuccess: tuple = LoginRegister.LoginUser(login_username, login_password)
-        if loginSuccess[0]:
-            st.session_state.logged_in = True
-            st.session_state.username = login_username
-            st.success(f"Welcome back, {login_username}! ")
-
-            # Redirect to dashboard page
-            st.switch_page("pages/1_Cyber Analytics.py")
-        else:
-            st.error(loginSuccess[1])
+def ConfigLayout():
+    st.set_page_config(page_title="Login / Register", page_icon="🔑", layout="centered")
+    st.title("🔐 Welcome")
+    tab_login, tab_register = st.tabs(["Login", "Register"])
+    return tab_login, tab_register
 
 
-# ----- REGISTER TAB -----
-with tab_register:
-    st.subheader("Register")
+def GoCyber():   
+    if st.session_state.logged_in:
+        st.success(f"Already logged in as **{st.session_state.username}**.")
+        if st.button("Go to cyber analytics"):
+            # Use the official navigation API to switch pages
+            st.switch_page("pages/1_Cyber Analytics.py")  # path is relative to Home.py :contentReference[oaicite:1]{index=1}
+        st.stop()  # Don’t show login/register again
 
-    new_username = st.text_input("Choose a username", key="register_username")
-    new_password = st.text_input("Choose a password", type="password", key="register_password")
-    confirm_password = st.text_input("Confirm password", type="password", key="register_confirm")
 
-    if st.button("Create account"):
-        # Basic checks – again, just for teaching
-        if not new_username or not new_password:
-            st.warning("Please fill in all fields.")
-        elif new_password != confirm_password:
-            st.error("Passwords do not match.")
-        
-        checkValidName: tuple = auth.ValidateUserName(new_username)
-        checkValidPWrd: tuple = auth.ValidatePassWd(new_password, confirm_password)
-        if not checkValidName[0]:
-            st.error(checkValidName[1])
-        if not checkValidPWrd[0]:
-            st.error(checkValidPWrd[1])
-        
-        checkRegister: tuple = LoginRegister.RegisterUser(new_username, new_password)
-        if not checkRegister[0]: #Failure
-            st.error(checkRegister[1])
+def Login(loginTab):
+    with loginTab:
+        st.subheader("Login")
+
+        login_username = st.text_input("Username", key="login_username")
+        login_password = st.text_input("Password", type="password", key="login_password")
+
+        if st.button("Log in", type="primary"):
+            # Simple credential check (for teaching only – not secure!)
+            loginSuccess: tuple = LoginRegister.LoginUser(login_username, login_password)
+            if loginSuccess[0]:
+                st.session_state.logged_in = True
+                st.session_state.username = login_username
+                st.success(f"Welcome back, {login_username}! ")
+
+                # Redirect to dashboard page
+                st.switch_page("pages/1_Cyber Analytics.py")
+            else:
+                st.error(loginSuccess[1])
+
+
+def Register(registerTab): 
+    with registerTab:
+        st.subheader("Register")
+
+        new_username = st.text_input("Choose a username", key="register_username")
+        new_password = st.text_input("Choose a password", type="password", key="register_password")
+        confirm_password = st.text_input("Confirm password", type="password", key="register_confirm")
+
+        if st.button("Create account"):
+            # Basic checks – again, just for teaching
+            if not new_username or not new_password:
+                st.warning("Please fill in all fields.")
+            elif new_password != confirm_password:
+                st.error("Passwords do not match.")
             
-        else:
-            st.session_state.users[new_username] = new_password
-            st.success("Account created! You can now log in from the Login tab.")
-            st.info("Tip: go to the Login tab and sign in with your new account.")
+            checkValidName: tuple = auth.ValidateUserName(new_username)
+            checkValidPWrd: tuple = auth.ValidatePassWd(new_password, confirm_password)
+            if not checkValidName[0]:
+                st.error(checkValidName[1])
+            if not checkValidPWrd[0]:
+                st.error(checkValidPWrd[1])
+            
+            checkRegister: tuple = LoginRegister.RegisterUser(new_username, new_password)
+            if not checkRegister[0]: #Failure
+                st.error(checkRegister[1])
+                
+            else:
+                st.session_state.users[new_username] = new_password
+                st.success("Account created! You can now log in from the Login tab.")
+                st.info("Tip: go to the Login tab and sign in with your new account.")
+
+
+if __name__ == "__main__":
+    Schema.CreateAllTables()
+    LoginCheck()
+    GoCyber()
+    logTab, regTab = ConfigLayout()
+    Register(regTab)
+    Login(logTab)

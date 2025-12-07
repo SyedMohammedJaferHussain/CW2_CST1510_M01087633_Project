@@ -1,9 +1,12 @@
 import streamlit as st
-import pandas as pd
-import numpy as np
 import plotly.express as exp
 import app.data.incidents as CyberFuncs
-import app.data.schema as Schema
+
+def Debug(*args) -> None:
+    #For easy debugging, using f-string formatting
+    for arg in args:
+        print(f"{arg=}")
+
 
 def CheckLogIn() -> None: 
         # Ensure state keys exist (in case user opens this page first)
@@ -20,15 +23,16 @@ def CheckLogIn() -> None:
         st.stop()
 
 
-def BarGraph():
-    cyberData = CyberFuncs.GetAllIncidents(filterQuery)
+def BarGraph(cyberData):
+    global filterApply
+    filterApply = False
     cyberBar = exp.bar(cyberData, x = "incident_type")
 
     st.subheader("Cyber Incidents")
     st.plotly_chart(cyberBar)
     
 
-def ApplyFilter(idStart: str, idStop: str, title: tuple, severity :tuple, status: tuple, dateStart :str, dateStop: str) -> str:
+def ApplyFilter(idStart: str, idStop: str, title: tuple, severity :tuple, status: tuple, dateStart :str, dateStop: str):
     """_summary_
 
     Args:
@@ -41,31 +45,43 @@ def ApplyFilter(idStart: str, idStop: str, title: tuple, severity :tuple, status
         dateStop (_str_): Stop range of date
 
     Returns:
-        str: Contains SQL Conditions to filter every condition taken
+        None
     """
     queries: tuple = tuple()
     if idStart and idStop: #Both selected by default
         queries += (f"id BETWEEN {idStart} AND {idStop}", )
     if title:
-        queries += (f"incident_type IN {title}", )  
+        if len(title) == 1:
+            queries += (f"incident_type = '{title[0]}'", )
+        else:
+            queries += (f"incident_type IN {title}", )  
     if severity:
-        queries += (f"severity IN {severity}", )
+        if len(severity) == 1:
+            queries += (f"severity = '{severity[0]}'", )
+        else:
+            queries += (f"severity IN {severity}", )
     if status:
-        queries += (f"status IN {status}", )
-        
-    if dateStart: #Selected as today by default
-        queries += (f"date BETWEEN '{dateStart}' AND '{dateStop}'", )
-    
+        if len(severity) == 1:
+            queries += (f"status = '{status[0]}'", )
+        else:
+            queries += (f"status IN {status}", )
+    #if dateStart: #Selected as today by default
+        #queries += (f"date BETWEEN '{dateStart}' AND '{dateStop}'", )
+
     query: str = ""
     noQueries: int = len(queries)
-    for i in range(noQueries): #To make sure last query doesn't have "AND" at the end
-        if i != noQueries - 1:
-            query += queries[i] + " AND "
-        else:
-            query += queries[i]
-            
-    return query
-
+    Debug(queries)
+    if len(queries) == 1:
+        query = queries[0]
+    for i in range(noQueries - 1): #To make sure last query doesn't have "AND" at the end
+        query += queries[i] + " AND "
+    if len(queries) > 1:
+        query += queries[-1]
+    
+    Debug(query)
+    global filterQuery
+    filterQuery = query
+    
 
 def Filters() -> None:
     """
@@ -89,13 +105,14 @@ def Filters() -> None:
             statusFil: tuple = tuple(st.multiselect("Status", ("open", "investigating", "resolved", "closed")))
         
         with st.expander("**Date**"):
-            dateStart = st.date_input("Start Value")
+            dateStart = st.date_input("Start Value", value = "2020-01-01")
             dateStop = st.date_input("Stop Value")
             
         if st.button("Apply Filters"):
-            global filterQuery
-            filterQuery = ApplyFilter(idStart, idStop, titleFil, sevFil, statusFil, str(dateStart), str(dateStop))
-
+            ApplyFilter(idStart, idStop, titleFil, sevFil, statusFil, str(dateStart), str(dateStop))
+            global filterApply
+            filterApply = True
+            
 
 def CreateIncident():
     """
@@ -111,13 +128,26 @@ def CreateIncident():
     reportedBy: str = st.session_state.username
     if st.button("Create Incident"):
         CyberFuncs.InsertIncident(date, incidentType, severity, status, desc, reportedBy)
+        st.success("Incident Created!")
     
     
 if __name__ == "__main__":
     CheckLogIn()
-    CyberFuncs.TransferCSV()
     st.title("Data Analysis")
+    
+    filterApply: bool = False
     filterQuery: str = ""
-    #Filters()
-    BarGraph()
+    Filters()
+    if filterApply:
+        data = CyberFuncs.GetAllIncidents(filterQuery)
+        print(data)
+        BarGraph(data)
+    else:
+        data = CyberFuncs.GetAllIncidents("")
+        print(data)
+        BarGraph(data)
+        
     st.divider()
+    
+    CreateIncident()
+    
