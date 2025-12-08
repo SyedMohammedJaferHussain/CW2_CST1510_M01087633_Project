@@ -1,6 +1,7 @@
 import streamlit as st
 import app.data.tickets as tickets
 import plotly.express as exp
+from openai import OpenAI
 
 
 def Debug(*args) -> None:
@@ -21,6 +22,8 @@ def CheckLogIn() -> None:
         st.session_state.logged_in = False
     if "username" not in st.session_state:
         st.session_state.username = ""
+    if "messages" not in st.session_state:
+        st.session_state.messages = list()
 
     if not st.session_state.logged_in:
         st.error("You must be logged in to view the dashboard.")
@@ -29,28 +32,38 @@ def CheckLogIn() -> None:
         st.stop()
         
 
-def RowColumnCnt():
+def SelectCol():
+    """
+        Creates a selectbox for user to select subject, priority, or status
+        Returns: selectCol (_str_): Contains column selected by user
+    """
+    st.divider()
+    selectedCol: str = st.selectbox("X Axis", ("subject", "priority", "status"))
+    return selectedCol
+    
+    
+def RowColumnCnt(column: str):
     """
         Displays number of rows in the bar chart filtered output
     """
-    st.divider()
-    rowCnt = tickets.TotalTickets(filterQuery)
+    rowCnt = tickets.TotalTickets(filterQuery, column)
     st.text(f"Row Count: {rowCnt}")
     
 
-def BarChart(df):
-    """_summary_
-    Explanation: Creates a bar chart displaying subject column from df
-    Args:
-        df (_DataFrame_): DataFrame consisting of query output from IT_Tickets Table
+def BarChart(df, xAxis: str):
     """
-    bar = exp.bar(df, x = "subject")
+        Explanation: Creates a bar chart displaying subject column from df
+        Args:
+            df (_DataFrame_): DataFrame consisting of query output from IT_Tickets Table
+            xAxis (_str_): Contains the attribute from It_Tickets which will be shown on IT_Tickets
+    """
+    bar = exp.bar(df, x = xAxis)
     st.subheader("IT Tickets")
     st.plotly_chart(bar)
 
 
 def FilterQuery(idStart: str, idStop: str, title: tuple, severity :tuple, status: tuple, dateStart :str, dateStop: str) -> str:
-    """_summary_
+    """
         Explanation: 
             Checks which filter widgets are filled and creates SQL query based off them
             If multiple checkboxes ticked, creates a tuple and uses IN Operator to filter through all selected
@@ -131,19 +144,39 @@ def Filters() -> None:
             
 
 
-def BarCheck() -> None:
+def BarCheck(column: str) -> None:
     """
         Checks if filter has applied and updates chart everytime button is pressed
         It then calls BarChart() with 
     """
     if filterApply:
-        data = tickets.GetAllTickets(filterQuery)
+        data = tickets.GetAllTickets(filterQuery, column)
         print(data)
-        BarChart(data)
+        BarChart(data, column)
     else:
-        data = tickets.GetAllTickets(None)
+        data = tickets.GetAllTickets("", column)
         print(data)
-        BarChart(data)
+        BarChart(data, column)
+
+
+def Table():
+    """
+        Creates table using st.dataframe. 
+        Contains all filtered records
+    """
+    st.divider()
+    data = tickets.GetTable(filterQuery)
+    st.dataframe(data)
+
+
+def LineChart():
+    """
+        Creates line chart using st.line_chart
+        Contains all dates grouped by amount of records in each date
+    """
+    st.divider()
+    data = tickets.GetDates(filterQuery)
+    st.line_chart(data, x = "created_date", color = "#5bcf7a")
 
 
 def PromptTicketInfo() -> tuple:
@@ -193,11 +226,74 @@ def CUDTicket():
             case "Delete Ticket":
                 tickets.DeleteTicket(tId) # type: ignore
                 st.success("Ticket Deleted!")
+
+
+def Streaming(completion):
+    """
+        Explanation: Takes delta time and displays ChatGPT response in small chunks
+        
+        Args: 
+            completion (_Stream[ChatCompletionChunk]_): Contains entire response in small chunks to allow for streaming
+        Returns:
+            fullReply (_str_): Contains the full response by ChatGPT
+    """
+    container = st.empty()
+    fullReply = ""
+    
+    for chunk in completion:
+        delta = chunk.choices[0].delta
+        if delta.content:
+            fullReply += delta.content
+            container.markdown(fullReply + "▌") # Add cursor effect, character is "Left Hand Block"
+    
+    # Remove cursor and show final response
+    container.markdown(fullReply)
+    return fullReply
+
+
+def AIAssistant():
+    """
+        Implementing ChatGPT 4o mini to assist with IT related doubts
+    """   
+    st.divider()
+    st.subheader("IT Expert")
+    Debug(st.session_state.messages)
+    for message in st.session_state.messages:
+        if message["role"] == "system":
+            continue
+        with st.chat_message(message["role"]):
+            st.markdown(message["content"])
+        
+    prompt = st.chat_input("Prompt our IT expert (GPT 4.0mini)...")
+    gptMsg = [{"role": "system", "content": "You are an IT expert, you hold knowledge specialising in office related IT incidents. Make sure your responses are not too long"}]
+    if prompt:
+        st.session_state.messages.append({ "role": "user", "content": prompt })
+        with st.chat_message("user"): 
+            st.markdown(prompt) #Display user prompt in markdown
+        
+        # Call OpenAI API with streaming
+        with st.spinner("Thinking..."):
+            completion = client.chat.completions.create( 
+                model = "gpt-4o-mini",
+                messages = gptMsg + st.session_state.messages,
+                stream = True,
+            )
             
+        # Display streaming response
+        with st.chat_message("assistant"):
+            fullReply = Streaming(completion)
+        
+        #Save AI response
+        st.session_state.messages.append({ "role": "assistant", "content": fullReply })
+        Debug(st.session_state.messages)
+       
     
 def LogOut():
+    """
+        Creates logout button for user.
+    """
     st.divider()
-    if st.button("Log out"):
+    if st.button("Log out", ):
         st.session_state.logged_in = False
         st.session_state.username = ""
         st.info("You have been logged out.")
@@ -209,6 +305,8 @@ if __name__ == "__main__":
     filterApply = False 
     filterQuery = ""
     widgetKey: str = ""
+    client = OpenAI(api_key = st.secrets["OPENAI_API_KEY"])
+    promptGiven: bool = False
     
     #Preliminary Checks for login
     CheckLogIn()
@@ -216,7 +314,11 @@ if __name__ == "__main__":
     
     #Widgets and UI
     Filters() 
-    RowColumnCnt()
-    BarCheck()
+    Table()
+    sub: str = SelectCol()
+    RowColumnCnt(sub)
+    BarCheck(sub)
+    LineChart()
     CUDTicket()
+    AIAssistant()
     LogOut()

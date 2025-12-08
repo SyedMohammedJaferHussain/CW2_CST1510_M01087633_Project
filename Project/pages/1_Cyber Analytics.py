@@ -134,9 +134,10 @@ def CreateIncident():
 if __name__ == "__main__":
     CheckLogIn()
     st.title("Data Analysis")
-    
+    CyberFuncs.TransferCSV()
     filterApply: bool = False
     filterQuery: str = ""
+    INCIDENTS: tuple = ("DDoS attack", "Phishing email detected", "Data breach", "Zero-day exploit activity", "Firewall breach", "Suspicious login", "Malware infection", "SQL injection attempt", "Ransomware detected", "Unauthorized access attempt")
     Filters()
     if filterApply:
         data = CyberFuncs.GetAllIncidents(filterQuery)

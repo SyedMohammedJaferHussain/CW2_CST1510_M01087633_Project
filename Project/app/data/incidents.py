@@ -47,3 +47,21 @@ def TotalIncidents(filter: str) -> int:
     totalInc = pd.read_sql_query(query, conn)
     
     return len(totalInc)
+
+
+def TransferCSV():
+    import csv
+    from pathlib import Path
+    conn = connect_database()
+    cursor = conn.cursor()
+    with open(Path("DATA/cyber_incidents.csv")) as itFile:
+        reader = csv.reader(itFile)
+        header: bool = True
+        for row in reader:
+            if header == True:
+                header = False
+                continue
+            cursor.execute("INSERT INTO Cyber_Incidents (id, incident_type, severity, status, date) VALUES (?, ?, ?, ?, ?)", (row[0], row[1], row[2], row[3], row[4]))
+
+    conn.commit()
+    conn.close()

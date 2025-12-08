@@ -5,7 +5,7 @@ def CreateUsersTable(conn):
         CREATE TABLE IF NOT EXISTS Users (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             username TEXT NOT NULL UNIQUE,
-            password_hash TEXT NOT NULL,
+            password_hash TEXT NOT NULL
         )
     """)
     conn.commit()
@@ -76,7 +76,7 @@ def CreateAllTables() -> None:
     from pathlib import Path
 
     conn = sqlite3.connect(Path("DATA") / "intelligence_platform.db")
-    #CreateUsersTable(conn)
+    CreateUsersTable(conn)
     CreateCyberIncidentsTable(conn)
     CreateDatasetsMetadataTable(conn)
-    #CreateITTicketsTable(conn)
+    CreateITTicketsTable(conn)

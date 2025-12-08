@@ -20,28 +20,43 @@ def TransferCSV():
     conn.close()
     
 
-def GetQuery(filter) -> str:
+def GetQuery(filter, column) -> str:
     if filter:
-        return f"SELECT subject FROM IT_Tickets WHERE {filter}"
+        return f"SELECT {column} FROM IT_Tickets WHERE {filter}"
     else:
-        return "SELECT subject from IT_Tickets"
+        return f"SELECT {column} from IT_Tickets"
 
 
-def GetAllTickets(filter):
+def GetAllTickets(filter: str, col: str):
     conn = db.connect_database()
-    df = pd.read_sql_query(GetQuery(filter), conn)
+    df = pd.read_sql_query(GetQuery(filter, col), conn)
     conn.close()
     
     return df
 
 
-def TotalTickets(filter: str) -> int:
+def GetTable(filter: str):
     conn = db.connect_database()
-    query = GetQuery(filter)
+    return pd.read_sql_query(f"SELECT * FROM IT_Tickets WHERE {filter}", conn) if filter else pd.read_sql_query(f"SELECT * FROM IT_Tickets", conn)
+
+
+def TotalTickets(filter: str, column: str) -> int:
+    conn = db.connect_database()
+    query = GetQuery(filter, column)
     totalInc = pd.read_sql_query(query, conn)
     
     return len(totalInc)
 
+
+def GetDates(filter: str):
+    conn = db.connect_database()
+    if filter:  
+        query = f"SELECT created_date, COUNT(*) FROM IT_Tickets as dateAmt GROUP BY created_date HAVING {filter}"
+    else:
+        query = f"SELECT created_date, COUNT(*) FROM IT_Tickets as dateAmt GROUP BY created_date"
+    data = pd.read_sql_query(query, conn)
+    return data
+    
 
 def InsertTicket(tID: str, sub: str, prio: str, status: str, crDate: str):
     conn = db.connect_database()
