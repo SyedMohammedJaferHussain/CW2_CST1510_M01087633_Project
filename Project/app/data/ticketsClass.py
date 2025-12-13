@@ -4,10 +4,13 @@ from pathlib import Path
 from typing import Any
 import pandas as pd
 import pickle
-from os import remove
 
 
 def TransferFromDB():
+    """
+        Gets all rows from IT_Tickets and creates a list of ITTicket
+        Returns: itTickets (_list[ITTicket]_): List containing all tickets in database
+    """
     dbMgr = DatabaseManager(str(Path("DATA") / "intelligence_platform.db"))
     df = dbMgr.FetchAll("SELECT * FROM IT_Tickets ORDER BY ticket_id")
     itTickets: list[ITTicket] = []
@@ -24,6 +27,14 @@ def TransferFromDB():
 
 
 def GetColumn(col: str, ticket: ITTicket):
+    """
+        Matches string to respective column value
+        Args:
+            col (_str_): Contains string form of column
+            ticket (_ITTicket_): Ticket to get column value
+        Returns:
+            (_int_ | _str_): Value of ticket[col]
+    """
     match col:
         case "ticket_id":
             return ticket.GetID()
@@ -41,7 +52,13 @@ def GetColumn(col: str, ticket: ITTicket):
 
 def CheckFilters(filters: dict | None, ticket: ITTicket):
     """
-        filters Example: {"ticket_id": lambda x: x < 100 and x > 20} which checks if ticket_id between 20 and 100
+        Explanation: 
+            Iterates through filters and checks if the function value returns True for all, if one returns False, break and return False
+        Args:
+            filters (_dict_): Dictionary of form dict[str, function]
+            ticket (_ITTicket_): Ticket which filter is being checked on
+        Returns:
+            check (_bool_): If True, passed all filters. If False, failed one filter
     """
     if not filters:
         return True
@@ -54,18 +71,31 @@ def CheckFilters(filters: dict | None, ticket: ITTicket):
     return check
 
 
-def AddCnt(hash: dict, col: Any):
-    if col in hash["column"]:
-        index: int = hash["column"].index(col)
-        hash["vals"][index] += 1
+def AddCnt(hash: dict, col: Any, colName: str) -> None:
+    """
+        Explanation:
+            Modifies hash to update col if found or not found
+        Args: 
+            hash (_dict_): Dictionary of type {column: count(column)}
+            col (_Any_): Contains column value of ticket
+            colName (_str_): Contains value of x-axis to be shown in charts
+    """
+    if col in hash[colName]:
+        index: int = hash[colName].index(col)
+        hash["Count"][index] += 1
     else:
-        hash["column"].append(col)
-        hash["vals"].append(1)
+        hash[colName].append(col)
+        hash["Count"].append(1)
 
 
 def GetRows(filters: dict) -> pd.DataFrame:
     """
-        Takes filters and column name returns all rows fulfilling filters
+        Explanation: 
+            Iterates through all rows of tickets, if filter pass, it appends to dataframe
+        Args:
+            filters (_dict_): Contains filters of form dict[str, function]
+        Returns:
+            df (_df.DataFrame_): Contains DataFrame with all rows and labelled columns
     """
     tickets: list[ITTicket] = GetTickets()
     allRows: list = []
@@ -77,35 +107,41 @@ def GetRows(filters: dict) -> pd.DataFrame:
     return df
 
 
-def GetColCount(filters: dict, col: str):
+def GetColCount(filters: dict, col: str) -> pd.DataFrame:
     """
-        Takes filters and column name, returns each distinct column along with number of occurances
-        Mimics GROUP BY HAVING
+        Explanation: 
+            Iterates through all rows of tickets, gets number of occurances of each value in col and returns respective dataframe
+        Args:
+            filters (_dict_): Contains filters of form dict[str, function]
+            col (_str_): Contains column/attribute of ITTicket to get DataFrame from
+        Returns:
+            df (_df.DataFrame_): Contains DataFrame with all rows and labelled columns
     """
-    tickets: list[ITTicket] = GetTickets()
-    subjects: dict[str, list[str | int]] = {"column": [], "vals": []} #Dict of form column: ["columns"], vals: [1,2,3]
-    priorities: dict[str, list[str | int]] = {"column": [], "vals": []}
-    statusS: dict[str, list[str | int]] = {"column": [], "vals": []}
-    dates: dict[str, list[str | int]] = {"column": [], "vals": []}
+    tickets: list[ITTicket] = GetTickets() #Create dictionaries
+    subjects: dict[str, list[str | int]] = {col: [], "Count": []}
+    priorities: dict[str, list[str | int]] = {col: [], "Count": []}
+    statusS: dict[str, list[str | int]] = {col: [], "Count": []}
+    dates: dict[str, list[str | int]] = {col: [], "Count": []}
     noTickets: int = len(tickets)
-    dfToReturn = {}
+    
     for i in range(noTickets):
         ticket = tickets[i]
         if not CheckFilters(filters, ticket):
             continue
         
-        column = GetColumn(col, ticket)
+        column = GetColumn(col, ticket) #Get number of occurances of each value in col
         match col:
             case "subject":
-                AddCnt(subjects, column)
+                AddCnt(subjects, column, col)
             case "priority":
-                AddCnt(priorities, column)
+                AddCnt(priorities, column, col)
             case "status":
-                AddCnt(statusS, column)
+                AddCnt(statusS, column, col)
             case "created_date":
-                AddCnt(dates, column)
+                AddCnt(dates, column, col)
                 
-    match col:
+    dfToReturn = {}           
+    match col: #Return correct DataFrame
         case "subject":
                 dfToReturn = subjects
         case "priority":
@@ -115,22 +151,32 @@ def GetColCount(filters: dict, col: str):
         case "created_date":
                 dfToReturn = dates
     
-    df = pd.DataFrame(dfToReturn)
-    print("-" * 30, df)
-    return df
+    return pd.DataFrame(dfToReturn)
 
 
-def GetRowCnt(filter: dict):
+def GetRowCnt(filters: dict) -> int:
+    """
+        Args:
+            filters (_dict_): Contains filters of form dict[str, function]
+        Returns:
+            cnt (_int_): Contains number of rows that fulfill filters        
+    """
     tickets: list[ITTicket] = GetTickets()
     cnt: int = 0
     for ticket in tickets:
-        if CheckFilters(filter, ticket):
+        if CheckFilters(filters, ticket):
             cnt += 1
     
     return cnt
 
 
 def GetIDs(tickets: list[ITTicket]) -> list[int]:
+    """
+        Args:
+            tickets (_list[ITTIcket]_): List of all tickets
+        Returns:
+            ids (_list[int]_): Contains list of all ids in tickets
+    """
     ids: list[int] = []
     for ticket in tickets:
         ids.append(ticket.GetID())
@@ -142,6 +188,19 @@ def CheckID(tickets: list[ITTicket], id: int) -> bool:
 
 
 def InsertTicket(tID: int, sub: str, prio: str, status: str, crDate: str) -> None | bool:
+    """
+        Args:
+            tID (int): Contains new ticket id
+            sub (str): Contains new ticket subject
+            prio (str): Contains new ticket priority
+            status (str): Contains new ticket status
+            crDate (str): Contains new ticket createdDate
+
+        Returns:
+            None | bool: False if ID exists in tickets, else None
+    """    
+
+    
     tickets: list[ITTicket] = GetTickets()
     ticket: ITTicket = ITTicket(tID, sub, prio, status, crDate)
     if not CheckID(tickets, tID):
@@ -151,6 +210,16 @@ def InsertTicket(tID: int, sub: str, prio: str, status: str, crDate: str) -> Non
 
 
 def GetIndex(lst: list[ITTicket], target: int) -> int:
+    """
+        Explanation:
+            Uses BinarySearch algorithm to search for target in most efficient manner
+            For more info go to https://www.geeksforgeeks.org/dsa/binary-search/
+        Args:
+            lst (list[ITTicket]): Contains all tickets
+            target (int): Target to be searched for
+        Returns:
+            int: Index location of target
+    """    
     low: int = 0
     high: int = len(lst) - 1
     while low <= high:
@@ -165,7 +234,18 @@ def GetIndex(lst: list[ITTicket], target: int) -> int:
     return -1
 
 
-def UpdateTicket(id: int, newId: int, newSub: str, newPrio: str, newStat :str, newDate: str):
+def UpdateTicket(id: int, newId: int, newSub: str, newPrio: str, newStat :str, newDate: str) -> None:
+    """
+        Explanation:
+            Updates ticket after finding index of id and calls WriteTickets()
+        Args:
+            id (int): Contains ticket id to update
+            newId (int): Contains new ticket id
+            newSub (str): Contains new ticket subject
+            newPrio (str): Contains new ticket priority
+            newStat (str): Contains new ticket status
+            newDate (str): Contains new ticket created_date
+    """    
     tickets: list[ITTicket] = GetTickets()
     index: int = GetIndex(tickets, int(id))
     tickets[index] = ITTicket(newId, newSub, newPrio, newStat, newDate)
@@ -173,13 +253,26 @@ def UpdateTicket(id: int, newId: int, newSub: str, newPrio: str, newStat :str, n
 
 
 def DeleteTicket(id: str):
+    """
+        Explanation:
+            Deletes ticket after finding index of id and calls WriteTickets()
+        Args:
+            id (str): Contains id of ticket to be deleted
+    """    
     tickets: list[ITTicket] = GetTickets()
     index: int = GetIndex(tickets, int(id))
     tickets.remove(tickets[index])
     WriteTickets(tickets)
 
 
-def IncCount(column: str, dictionary: dict):
+def IncCount(column: str, dictionary: dict) -> None:
+    """
+        Explanation:
+            Increments dictionary[column] value by 1 if exists, else sets value to 1
+        Args:
+            column (str): Value in dictionary to increment/set
+            dictionary (dict): Dictionary containing various columns
+    """    
     if column in dictionary:
         dictionary[column] += 1 #type: ignore
     else:
@@ -187,6 +280,13 @@ def IncCount(column: str, dictionary: dict):
 
 
 def GetMaxMin(dictionary: dict[str, str | int]) -> None: 
+    """
+        Explanation: 
+            Goes through every column in dictionary and finds maximum and minimum value and column name. 
+            Puts maximum and minimum value and column names as keys in dictionary
+        Args:
+            dictionary (dict[str, str  |  int]): Dictionary containing columns and Max/Min Column names and values
+    """    
     firstKey: str = list(dictionary.keys())[0]
     dictionary["MaxCol"] = firstKey
     dictionary["MinCol"] = firstKey
@@ -206,9 +306,12 @@ def GetMaxMin(dictionary: dict[str, str | int]) -> None:
 
 def Metrics():
     """
-        Creates 3 dictionaries (subjects, priorities, statusS) of form dict[str, str | int]
-        The keys will be columnName/MaxVal/MaxCol/MinVal/MinCol
-        The values will be Count/Values containing max and min values/Columns containing max and min values
+        Explanation:  
+            Creates 3 dictionaries (subjects, priorities, statusS) of form dict[str, str | int]
+            The keys will be columnName/MaxVal/MaxCol/MinVal/MinCol
+            The values will be Count/Values containing max and min values/Columns containing max and min values
+        Returns:
+            tuple[dict[str, str | int]]: Contains 3 dictionaries containing maximum/minimum column name and value
     """
     tickets: list[ITTicket] = GetTickets()
     
@@ -234,19 +337,33 @@ def Metrics():
 
 
 def GetTickets() -> list[ITTicket]:
+    """
+        Explanation:
+            Uses pickle module to read(Deserialise) tickets.bin containing tickets
+        Returns: 
+            tickets (list[ITTicket]): Contains all tickets
+    """
     with open(Path("DATA") / "tickets.bin", "rb") as ticketsObjs:
         tickets = pickle.load(ticketsObjs) 
     return tickets
 
 
 def WriteTickets(tickets: list[ITTicket]):
+    """
+        Args:
+            tickets (list[ITTicket]): Contains all tickets in tickets.bin
+    """    
     with open(Path("DATA") / "tickets.bin", "wb") as ticketsObjs:
         pickle.dump(tickets, ticketsObjs)
         
 
 def Commit():
+    """
+        Explanation:
+            Commits all changes made to tickets after logging out
+            Iterates through every ticket and adds ticket to IT_Tickets in intelligence_platform.db
+    """
     tickets = GetTickets()
-    remove(Path("DATA") / "tickets.bin")
     dbMgr = DatabaseManager(str(Path("DATA") / "intelligence_platform.db"))
     dbMgr.Exec("DELETE FROM IT_Tickets")
     for ticket in tickets:

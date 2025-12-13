@@ -53,13 +53,13 @@ def RowColumnCnt() -> None:
     st.metric("Row Count", rowCnt)
     
 
-def BarChart(df):
+def BarChart(df, col: str):
     """
         Explanation: Creates a plotly.expressbar chart displaying column and number of occurances of column from df
         Args:
             df (_DataFrame_): DataFrame consisting of query output from IT_Tickets Table
     """
-    bar = exp.bar(df, x = "column", y = "vals")
+    bar = exp.bar(df, x = col, y = "Count")
     st.plotly_chart(bar)
 
 
@@ -157,10 +157,10 @@ def BarCheck(column: str) -> None:
     """
     if filterApply:
         data = tickets.GetColCount(filterCons, column)
-        BarChart(data)
+        BarChart(data, column)
     else:
         data = tickets.GetColCount(None, column) #type: ignore
-        BarChart(data)
+        BarChart(data, column)
 
 
 def Table() -> None:
@@ -181,7 +181,7 @@ def LineChart() -> None:
     st.divider()
     st.subheader("Line Chart (Dates)")
     data = tickets.GetColCount(filterCons, "created_date")
-    st.line_chart(data, x = "column", y = "vals", color = "#4bd16f")
+    st.line_chart(data, x = "created_date", y = "Count", color = "#4bd16f")
 
 
 def PieChart(col: str) -> None:
@@ -190,8 +190,8 @@ def PieChart(col: str) -> None:
         
     """
     data = tickets.GetColCount(filterCons, col)
-    labels = data["column"].tolist()
-    sizes = data["vals"].tolist()
+    labels = data[col].tolist()
+    sizes = data["Count"].tolist()
     
     fig, ax = subplots() #fig is figure, ax is array of axes
     ax.pie(sizes, labels = labels, autopct = "%1.1f%%", startangle = 90)
