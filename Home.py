@@ -3,7 +3,7 @@ import app.data.schema as Schema
 import app.data.tickets as tickets
 import app.data.incidents as incidents
 import app.data.datasets as datasets
-import app.data.users as users
+import app.data.users as Users
 import pickle
 
 
@@ -63,7 +63,7 @@ def Login(loginTab) -> None:
 
         if st.button("Log in", type = "primary"):
             # Simple credential check (for teaching only – not secure!)
-            loginSuccess: bool = users.LoginUser(loginUsername, loginPasswd)
+            loginSuccess: bool = Users.LoginUser(loginUsername, loginPasswd)
             if loginSuccess:
                 st.session_state.logged_in = True
                 st.session_state.username = loginUsername
@@ -96,7 +96,7 @@ def Register(registerTab):
             if not new_username or not new_password:
                 st.warning("Please fill in all fields.")
             
-            registerRes = users.RegisterUser(new_username, new_password, confirm_password)
+            registerRes = Users.RegisterUser(new_username, new_password, confirm_password)
             if registerRes:
                 st.error(registerRes)                
             else:
@@ -123,7 +123,7 @@ if __name__ == "__main__":
     ticketsLst = tickets.TransferFromDB()
     incidentsLst = incidents.TransferFromDB()
     datasetsLst = datasets.TransferFromDB()
-    usersLst = users.TransferFromDB()
+    usersLst = Users.TransferFromDB()
     SerializeObjs()
     Schema.CreateAllTables()
     LoginCheck()
