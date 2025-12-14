@@ -4,7 +4,6 @@ from pathlib import Path
 from typing import Any
 import pandas as pd
 import pickle
-import csv
 
 
 def TransferFromDB():
@@ -23,7 +22,6 @@ def TransferFromDB():
     for i in range(len(df)):
         ticket: ITTicket = ITTicket(int(ids[i]), subs[i], prios[i], stats[i], crDates[i])
         itTickets.append(ticket)
-        print(ticket)
     
     return itTickets
 
@@ -182,7 +180,6 @@ def GetIDs(tickets: list[ITTicket]) -> list[int]:
     ids: list[int] = []
     for ticket in tickets:
         ids.append(ticket.GetID())
-    print(ids)
     return ids
 
 
@@ -206,7 +203,6 @@ def InsertTicket(tID: int, sub: str, prio: str, status: str, crDate: str) -> boo
     tickets: list[ITTicket] = GetTickets()
     ticket: ITTicket = ITTicket(tID, sub, prio, status, crDate)
     check = CheckID(tickets, tID)
-    print(check)
     if check:
         return False
     tickets.append(ticket)

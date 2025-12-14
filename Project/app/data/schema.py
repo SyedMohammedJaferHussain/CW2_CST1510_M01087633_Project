@@ -42,7 +42,8 @@ def CreateDatasetsMetadataTable(conn):
             dataset_name TEXT NOT NULL,
             category TEXT,
             file_size_mb REAL,
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            source TEXT,
+            last_update TEXT
         )
     """)
     conn.commit()

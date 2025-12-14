@@ -249,7 +249,7 @@ def CRUDTicket():
         match cudChoice:
             case "Create Ticket":
                 result = tickets.InsertTicket(int(tId), subjectType, priority, status, date) # type: ignore
-                if not type(result):
+                if not result:
                     st.error("Ticket ID Exists!")
                 else:      
                     st.success("Ticket Created!")

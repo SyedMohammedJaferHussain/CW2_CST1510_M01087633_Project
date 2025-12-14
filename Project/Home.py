@@ -4,6 +4,7 @@ import app.data.schema as Schema
 import auth
 import app.data.ticketsClass as tickets
 import app.data.incidentsClass as incidents
+import app.data.datasets as datasets
 import pickle
 
 
@@ -122,11 +123,14 @@ def SerializeObjs():
         pickle.dump(ticketsLst, ticketsObjs)
     with open("DATA/incidents.bin", "wb") as incidentsObjs:
         pickle.dump(incidentsLst, incidentsObjs)
+    with open("DATA/datasets.bin", "wb") as datasetsObjs:
+        pickle.dump(datasetsLst, datasetsObjs)
 
 
 if __name__ == "__main__": 
     ticketsLst = tickets.TransferFromDB()
     incidentsLst = incidents.TransferFromDB()
+    datasetsLst = datasets.TransferFromDB()
     SerializeObjs()
     Schema.CreateAllTables()
     LoginCheck()
