@@ -127,6 +127,7 @@ def GetColCount(filters: dict, col: str) -> pd.DataFrame:
     for i in range(noIncidents):
         incident = incidents[i]
         if not CheckFilters(filters, incident):
+            print(1)
             continue
         
         column = GetColumn(col, incident) #Get number of occurances of each value in col
@@ -144,7 +145,7 @@ def GetColCount(filters: dict, col: str) -> pd.DataFrame:
     match col: #Return correct DataFrame
         case "incident_type":
                 dfToReturn = incidentTypes
-        case "priority":
+        case "severity":
                 dfToReturn = severities
         case "status":
                 dfToReturn = statusS

@@ -157,10 +157,14 @@ def BarCheck(column: str) -> None:
         It then calls BarChart() with 
     """
     if filterApply:
+        print(1)
         data = incidents.GetColCount(filterCons, column)
+        print(data)
         BarChart(data, column)
     else:
+        
         data = incidents.GetColCount(None, column) #type: ignore
+        print(data)
         BarChart(data, column)
 
 
