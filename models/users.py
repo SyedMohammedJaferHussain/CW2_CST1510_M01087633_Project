@@ -6,6 +6,8 @@ class User:
     
     def GetUserName(self):
         return self.__userName
+    def GetPassHash(self):
+        return self.__passwdHash
     
     
     def VerifyPasswd(self, plainText: str, hasher):

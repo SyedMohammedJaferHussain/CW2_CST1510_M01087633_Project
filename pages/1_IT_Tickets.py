@@ -1,10 +1,11 @@
 import streamlit as st
-import app.data.datasets as datasets
+import app.data.tickets as tickets
 import plotly.express as exp
 from openai import OpenAI
 from matplotlib.pyplot import subplots
 from datetime import date
 from typing import Literal
+from app.services.ai_assistant import AIAssistant
 
 
 def Debug(*args) -> None:
@@ -25,8 +26,8 @@ def CheckLogIn() -> None:
         st.session_state.logged_in = False
     if "username" not in st.session_state:
         st.session_state.username = ""
-    if "metaMsg" not in st.session_state:
-        st.session_state.metaMsgs = list()
+    if "itMsgs" not in st.session_state:
+        st.session_state.itMsgs = list()
 
     if not st.session_state.logged_in:
         st.error("You must be logged in to view the dashboard.")
@@ -35,13 +36,13 @@ def CheckLogIn() -> None:
         st.stop()
 
 
-def SelectCol() -> Literal["source", "category"]:
+def SelectCol() -> Literal['subject', 'priority', 'status']:
     """
         Creates a selectbox for user to select subject, priority, or status
         Returns: selectCol (_str_): Contains column selected by user
     """
     st.divider()
-    selectedCol: str = st.selectbox("X Axis", ("source", "category"))
+    selectedCol: str = st.selectbox("X Axis", ("subject", "priority", "status"))
     return selectedCol
     
     
@@ -49,7 +50,7 @@ def RowColumnCnt() -> None:
     """
         Displays metric containing number of rows in filtered output
     """
-    rowCnt = datasets.GetRowCnt(filterCons)
+    rowCnt = tickets.GetRowCnt(filterCons)
     st.metric("Row Count", rowCnt)
     
 
@@ -57,7 +58,7 @@ def BarChart(df, col: str):
     """
         Explanation: Creates a plotly.expressbar chart displaying column and number of occurances of column from df
         Args:
-            df (_DataFrame_): DataFrame consisting of query output from IT_datasets Table
+            df (_DataFrame_): DataFrame consisting of query output from IT_Tickets Table
     """
     bar = exp.bar(df, x = col, y = "Count")
     st.plotly_chart(bar)
@@ -65,17 +66,19 @@ def BarChart(df, col: str):
 
 def AnalysisSummary() -> None:
     """
-        Explanation: Creates 6 metrics for most and least amounts of datasets, priorities, and statuses
+        Explanation: Creates 6 metrics for most and least amounts of tickets, priorities, and statuses
         Returns: None
     """
-    ctgrys, sources = datasets.Metrics()  
+    subjects, priorities, statusS = tickets.Metrics(filterCons)  
     
     with st.container(horizontal = True):
-        st.metric("Most Records of Categories", f"{ctgrys["MaxCol"].title()}:\n{ctgrys["MaxVal"]}", width = "content", border = True) #type: ignore 
-        st.metric("Least Records of Categories", f"{ctgrys["MinCol"].title()}:\n{ctgrys["MinVal"]}", width = "content", border = True) #type: ignore 
-        st.metric("Most Records of Sources", f"{sources["MaxCol"].title()}:\n{sources["MaxVal"]}", width = "content", border = True) #type: ignore 
-        st.metric("Least Records of Sources", f"{sources["MinCol"].title()}:\n{sources["MinVal"]}", width = "content", border = True) #type: ignore 
-        
+        st.metric("Most Records of Tickets", f"{subjects["MaxCol"].title()}:\n{subjects["MaxVal"]}", width = "content", border = True) #type: ignore 
+        st.metric("Least Records of Tickets", f"{subjects["MinCol"].title()}:\n{subjects["MinVal"]}", width = "content", border = True) #type: ignore 
+        st.metric("Most Records of Priorities", f"{priorities["MaxCol"].title()}:\n{priorities["MaxVal"]}", width = "content", border = True) #type: ignore 
+        st.metric("Least Records of Priorities", f"{priorities["MinCol"].title()}:\n{priorities["MinVal"]}", width = "content", border = True) #type: ignore 
+        st.metric("Most Records of Statuses", f"{statusS["MaxCol"].title()}:\n{statusS["MaxVal"]}", width = "content", border = True) #type: ignore 
+        st.metric("Least Records of Statuses", f"{statusS["MinCol"].title()}:\n{statusS["MinVal"]}", width = "content", border = True) #type: ignore 
+
 
 def GetDate(dateVal: str) -> date:
     """
@@ -88,29 +91,30 @@ def GetDate(dateVal: str) -> date:
     return date(int(year), int(month), int(day))
     
 
-def FilterConditions(idStart: str, idStop: str, ctgrys: tuple, srcs: tuple, sizeStart :str, sizeStop: str, dateStart :str, dateStop: str):
+def FilterConditions(idStart: str, idStop: str, titles: tuple, priorities :tuple, status: tuple, dateStart :str, dateStop: str):
     """
+        Explanation: 
+            Checks every filter variable. If filled: adds key: value pair to filterCons of form {column: lambda function}
         Args:
-            idStart (str): Start value of id
-            idStop (str): Stop value of id
-            ctgrys (tuple): Tuple of categories to search in
-            srcs (tuple): Tuple of sources to search in
-            sizeStart (int): Start value of fileSize
-            sizeStop (int): Stop value of fileSize
-            dateStart (str): Start value of date
-            dateStop (str): Stop value of date
-    """    
+            idStart (_str_): Start range of ID
+            idStop (_str_): Stop range of ID
+            titles (_tuple_): Titles to check for
+            priorities (_tuple_): Priorities to check for
+            status (_tuple_): Status to check for
+            dateStart (_str_): Start range of date
+            dateStop (_str_): Stop range of date
+    """
     global filterCons
     if idStart and idStop: #Both selected by default
-        filterCons["id"] = lambda id: int(idStart) <= id and id <= int(idStop)
-    if ctgrys:
-        filterCons["category"] = lambda ctgry: ctgry in ctgrys
-    if srcs:
-        filterCons["source"] = lambda source: source in srcs
-    if sizeStart and sizeStop: #Both selected by default
-        filterCons["file_size_mb"] = lambda size: float(sizeStart) <= size and size <= float(sizeStop)
+        filterCons["ticket_id"] = lambda tId: int(idStart) <= tId <= int(idStop)
+    if titles:
+        filterCons["subject"] = lambda sub: sub in titles
+    if priorities:
+        filterCons["priority"] = lambda prio: prio in priorities
+    if status:
+        filterCons["status"] = lambda stat: stat in status
     if dateStart: #Selected as today by default
-        filterCons["last_updated"] = lambda date: GetDate(dateStart) <= GetDate(date) <= GetDate(dateStop)
+        filterCons["created_date"] = lambda date: GetDate(dateStart) <= GetDate(date) <= GetDate(dateStop)
 
 
 def Filters() -> None:
@@ -120,39 +124,29 @@ def Filters() -> None:
     """
     if curTab != "Analysis": #Only show when on analysis tab
         return
-
+    
     with st.sidebar:
         st.title("Filters")
-
+        
         with st.expander("**ID**"):
-            col1, col2 = st.columns(2)
-            with col1:   
-                idStart: str = str(st.text_input("Start Value"))
-            with col2:
-                idStop: str = str(st.text_input("Stop Value"))
-
-        with st.expander("**Category**"):
-            ctgryFil: tuple = tuple(st.multiselect("Category", categories))
+            idStart: str = str(st.text_input("Start Value"))
+            idStop: str = str(st.text_input("Stop Value"))
             
-        with st.expander("**Source**"):
-            sourceFil: tuple = tuple(st.multiselect("Source", sources))
-            
-        with st.expander("**File Size**"):
-            col1, col2 = st.columns(2)
-            with col1:
-                sizeStart: float = st.number_input("Start Value ", value = 0)
-            with col2:     
-                sizeStop: float = st.number_input("Stop Value ", value = 10000)
+        with st.expander("**Subject**"):
+            titleFil: tuple = tuple(st.multiselect("Subject", ("Printer not working", "Password reset request", "VPN connection issue", "Network outage", "Access request", "Software installation needed", "Malware alert", "Laptop not booting", "System Crash", "Email not syncing")))
 
+        with st.expander("**Priority**"):
+            prioFil: tuple = tuple(st.multiselect("Priority", ("low", "medium", "high", "urgent")))
+            
+        with st.expander("**Status**"):
+            statusFil: tuple = tuple(st.multiselect("Status", ("open", "in progress", "resolved")))
+        
         with st.expander("**Date**"):
-            col1, col2 = st.columns(2)
-            with col1:     
-                dateStart = st.date_input("Start Value  ", value = "2020-01-01")
-            with col2:     
-                dateStop = st.date_input("Stop Value  ")
-
+            dateStart = st.date_input("Start Value", value = "2020-01-01")
+            dateStop = st.date_input("Stop Value")
+            
         if st.button("Apply Filters"):
-            FilterConditions(idStart, idStop, ctgryFil, sourceFil, str(sizeStart), str(sizeStop), str(dateStart), str(dateStop))
+            FilterConditions(idStart, idStop, titleFil, prioFil, statusFil, str(dateStart), str(dateStop))
             global filterApply #Filter is currently being applied
             filterApply = True
             
@@ -163,10 +157,10 @@ def BarCheck(column: str) -> None:
         It then calls BarChart() with 
     """
     if filterApply:
-        data = datasets.GetColCount(filterCons, column)
+        data = tickets.GetColCount(filterCons, column)
         BarChart(data, column)
     else:
-        data = datasets.GetColCount(None, column) #type: ignore
+        data = tickets.GetColCount(None, column) #type: ignore
         BarChart(data, column)
 
 
@@ -176,7 +170,7 @@ def Table() -> None:
         Contains all filtered records
     """
     st.subheader("Table")
-    data = datasets.GetRows(filterCons)
+    data = tickets.GetRows(filterCons)
     st.dataframe(data)
 
 
@@ -187,8 +181,8 @@ def LineChart() -> None:
     """
     st.divider()
     st.subheader("Line Chart (Dates)")
-    data = datasets.GetColCount(filterCons, "last_updated")
-    st.line_chart(data, x = "last_updated", y = "Count", color = "#4bd16f")
+    data = tickets.GetColCount(filterCons, "created_date")
+    st.line_chart(data, x = "created_date", y = "Count", color = "#4bd16f")
 
 
 def PieChart(col: str) -> None:
@@ -196,7 +190,7 @@ def PieChart(col: str) -> None:
         Creates pie chart taking values from GetColCount() and matplotlib.subplots()
         
     """
-    data = datasets.GetColCount(filterCons, col)
+    data = tickets.GetColCount(filterCons, col)
     labels = data[col].tolist()
     sizes = data["Count"].tolist()
     
@@ -211,62 +205,60 @@ def PromptTicketInfo() -> tuple:
         Creates text input widgets for id, subject, date, priority, and status
         Returns: (_tuple_): Variables containing user input for each column
     """
-    id: str = st.text_input("Dataset ID")
-    name: str = st.text_input("Dataset Name")
-    category: str = st.selectbox("Category", categories) #type: ignore
-    fileSize: float = st.number_input("File Size (MB)", min_value = 0, max_value = 100000)
-    source: str = st.selectbox("Source", sources) #type: ignore
-    lastUpd: str = str(st.date_input("Last Updated"))
+    tId: str = st.text_input("Ticket ID")
+    subjectType: str = st.selectbox("Incident Type", ("Printer not working", "Password reset request", "VPN connection issue", "Network outage", "Access request", "Software installation needed", "Malware alert", "Laptop not booting", "System Crash", "Email not syncing"))
+    date: str = str(st.date_input("Date"))
+    priority: str = st.selectbox("Priority", ("low", "medium", "high", "urgent"))
+    status: str = st.selectbox("Status", ("open", "resolved", "in progress"))
     
-    return id, name, category, fileSize, source, lastUpd
+    return tId, subjectType, priority, status, date
 
 
 def CRUDTicket():
     """
-        Contains functions for creating, updating, and deleting datasets
+        Contains functions for creating, updating, and deleting tickets
         Explanation:
             Allows user to choose selectbox between CRUD Operations
             Calls PromptTicketInfo() or displays necessary input prompt areas for getting user input
-            When button pressed, take user input and call relevant function from datasetsClass.py
+            When button pressed, take user input and call relevant function from ticketsClass.py
     """
     st.divider()
     with st.sidebar:
         st.header("CRUD Operations")
-        cudChoice: str = st.selectbox("Operation", ("Create Dataset", "Read Datasets", "Update Dataset", "Delete Dataset"))
+        cudChoice: str = st.selectbox("Operation", ("Create Ticket", "Read Tickets", "Update Ticket", "Delete Ticket"))
     
     st.subheader(cudChoice)
-    if cudChoice == "Read Datasets":
+    if cudChoice == "Read Tickets":
         Table()
         return
 
-    if cudChoice == "Create Dataset":
-        id, name, category, fileSize, source, lastUpd = PromptTicketInfo()
-    elif cudChoice != "Read Dataset":
-        id: str = st.text_input("Dataset ID") #Only require id for delete and update
+    if cudChoice == "Create Ticket":
+        tId, subjectType, priority, status, date = PromptTicketInfo()
+    elif cudChoice != "Read Tickets":
+        tId: str = st.text_input("Ticket ID") #Only require id for delete and update
     
-    if cudChoice == "Update Dataset": #Creating seperate widgets for update ticket since using PromptTicketInfo() raises streamlit.errors.StreamlitDuplicateElementId
+    if cudChoice == "Update Ticket": #Creating seperate widgets for update ticket since using PromptTicketInfo() raises streamlit.errors.StreamlitDuplicateElementId
         st.markdown("**Updated Values**")
-        newId: int = int(st.number_input("Dataset ID "))
-        newName: str = st.text_input("Dataset Name")
-        newCtgry: str = st.selectbox("Category ", categories) #type: ignore
-        newFileSize: float = st.number_input("File Size (MB)", min_value = 0, max_value = 10000)
-        newSource: str = st.selectbox("Source", sources) #type: ignore
-        newUpdate: str = str(st.date_input("Last Updated"))
-        
+        newId: str = st.text_input("Ticket ID ")
+        newSub: str = st.selectbox("Incident Type ", ("Printer not working", "Password reset request", "VPN connection issue", "Network outage", "Access request", "Software installation needed", "Malware alert", "Laptop not booting", "System Crash", "Email not syncing"))
+        newDate: str = str(st.date_input("Date "))
+        newPrio: str = st.selectbox("Priority ", ("low", "medium", "high", "urgent"))
+        newStat: str = st.selectbox("Status ", ("open", "resolved", "in progress"))
+    
     if st.button(cudChoice):
         #Calling necessary functions for each CUD Operation
         match cudChoice:
-            case "Create Dataset":
-                result = datasets.InsertDataset(int(id), name, category, fileSize, source, lastUpd) #type: ignore
+            case "Create Ticket":
+                result = tickets.InsertTicket(int(tId), subjectType, priority, status, date) # type: ignore
                 if not result:
                     st.error("Ticket ID Exists!")
                 else:      
                     st.success("Ticket Created!")
-            case "Update Dataset":
-                datasets.UpdateDataset(id, newId, newName, newCtgry, newFileSize, newSource, newUpdate) #type: ignore
+            case "Update Ticket":
+                tickets.UpdateTicket(tId, newId, newSub, newPrio, newStat, newDate)# type: ignore
                 st.success("Ticket Updated!")
-            case "Delete Dataset":
-                datasets.DeleteDataset(id) # type: ignore
+            case "Delete Ticket":
+                tickets.DeleteTicket(tId) # type: ignore
                 st.success("Ticket Deleted!")
 
 
@@ -295,17 +287,17 @@ def Streaming(completion):
 
 def DisplayPrevMsgs():
     """
-        Displays all messages in st.session_state.metaMsgs except for messages by system 
+        Displays all messages in st.session_state.itMsgs except for messages by system 
         System message is initial prompt given to gpt for it to know its specific role
     """
-    for message in st.session_state.metaMsgs:
+    for message in st.session_state.itMsgs:
         if message["role"] == "system":
             continue
         with st.chat_message(message["role"]):
             st.markdown(message["content"])
 
 
-def AIAssistant():
+def OpenAIConnect():
     """
         Implementing ChatGPT 4o mini to assist with IT related doubts
     """   
@@ -313,27 +305,24 @@ def AIAssistant():
     st.header("IT Expert")
     DisplayPrevMsgs()
     
-    prompt = st.chat_input("Prompt our datasets expert (GPT 4.0mini)...")
-    gptMsg = [{"role": "system", "content": "You are an datasets expert, you hold specialised knowledge in all things related to datasets. Make sure your responses are not too long"}]
+    prompt = st.chat_input("Prompt our IT expert (GPT 4.0mini)...")
     if prompt:
         #Save user response
-        st.session_state.metaMsgs.append({ "role": "user", "content": prompt })
+        st.session_state.itMsgs.append({ "role": "user", "content": prompt })
         with st.chat_message("user"): 
             st.markdown(prompt)
         
-        # Call OpenAI API with streaming
-        with st.spinner("Thinking..."):
-            completion = client.chat.completions.create( 
-                model = "gpt-4o-mini",
-                messages = gptMsg + st.session_state.metaMsgs,
-                stream = True,
-            )
-            
+        assistant = AIAssistant(
+            "You are an IT expert, you hold knowledge specialising in office related IT incidents. Make sure your responses are not too long", 
+            client, 
+            st.session_state.metaMsgs)
+        completion = assistant.SendMessage(prompt) 
+        
         with st.chat_message("assistant"):
             fullReply = Streaming(completion)
         
         #Save AI response
-        st.session_state.metaMsgs.append({ "role": "assistant", "content": fullReply })
+        st.session_state.itMsgs.append({ "role": "assistant", "content": fullReply })
        
 
 def DisplayAllWidgets() -> None:
@@ -341,7 +330,7 @@ def DisplayAllWidgets() -> None:
         Handles all UI elements in this page
         Allows user to switch between Analysis, CRUD Operations, and AI Assistant
             Analysis: Contains Table, Barchart, Piechart, Linechart, Metrics, and Filters
-            CRUD Operations: Contains Create, Read, Update, and Delete datasets
+            CRUD Operations: Contains Create, Read, Update, and Delete tickets
             AI Assistant: Contains OpenAI API Interface with specialised chatbot for IT Related help
     """
     global curTab
@@ -364,18 +353,18 @@ def DisplayAllWidgets() -> None:
         case "CRUD Operations":
             CRUDTicket()
         case "AI Assistant":    
-            AIAssistant()
+            OpenAIConnect()
 
 
 def LogOut():
     """
         Creates logout button for user
-        Calls datasets.Commit() which saves all changes to DATA/intelligence_platform.db 
+        Calls tickets.Commit() which saves all changes to DATA/intelligence_platform.db 
         Logs out user and switches page to Home.py
     """
     st.divider()
     if st.button("Log out", ):
-        datasets.Commit()
+        tickets.Commit()
         st.session_state.logged_in = False
         st.session_state.username = ""
         st.info("You have been logged out.")
@@ -388,12 +377,10 @@ if __name__ == "__main__": #Main function
     filterCons: dict = {} #Of form: {"ticket_id": lambda id: 100 <= id <= 200}
     client = OpenAI(api_key = st.secrets["OPENAI_API_KEY"])
     curTab: str = ""
-    categories: tuple = ("Finance", "Education", "Environment", "Retail", "Transportation", "Technology", "Healthcare")
-    sources: tuple = ("Government Open Data", "Internal Analytics Team", "Kaggle", "Public API", "Research Institute")
     
     #Preliminary Checks for login
     CheckLogIn()
-    st.title("Datasets Metadata")
+    st.title("IT TICKETS")
     
     #Widgets and UI
     DisplayAllWidgets()

@@ -6,3 +6,7 @@ __pycache__/
 users.txt
 secrets.toml
 Test.py
+datasets.bin
+incidents.bin
+tickets.bin
+users.bin

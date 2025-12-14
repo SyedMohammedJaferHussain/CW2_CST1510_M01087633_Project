@@ -1,10 +1,11 @@
 import streamlit as st
-import app.data.incidentsClass as incidents
+import app.data.incidents as incidents
 import plotly.express as exp
 from openai import OpenAI
 from matplotlib.pyplot import subplots
 from datetime import date
 from typing import Literal
+from app.services.ai_assistant import AIAssistant
 
 
 def Debug(*args) -> None:
@@ -296,29 +297,27 @@ def DisplayPrevMsgs():
             st.markdown(message["content"])
 
 
-def AIAssistant():
+def OpenAIConnect():
     """
         Implementing ChatGPT 4o mini to assist with IT related doubts
     """   
     st.divider()
-    st.header("IT Expert")
+    st.header("Cyber Incidents Expert")
     DisplayPrevMsgs()
     
     prompt = st.chat_input("Prompt our cyber incidents expert (GPT 4.0mini)...")
-    gptMsg = [{"role": "system", "content": "You are an expert in office related cyber incidents. Make sure your responses are not too long"}]
     if prompt:
         #Save user response
         st.session_state.cyberMsgs.append({ "role": "user", "content": prompt })
         with st.chat_message("user"): 
             st.markdown(prompt)
+            
+        assistant = AIAssistant(
+            "You are an expert in office related cyber incidents. Make sure your responses are not too long", 
+            client, 
+            st.session_state.metaMsgs)
         
-        # Call OpenAI API with streaming
-        with st.spinner("Thinking..."):
-            completion = client.chat.completions.create( 
-                model = "gpt-4o-mini",
-                messages = gptMsg + st.session_state.cyberMsgs,
-                stream = True,
-            )
+        completion = assistant.SendMessage(prompt)
             
         with st.chat_message("assistant"):
             fullReply = Streaming(completion)
@@ -355,7 +354,7 @@ def DisplayAllWidgets() -> None:
         case "CRUD Operations":
             CRUDTicket()
         case "AI Assistant":    
-            AIAssistant()
+            OpenAIConnect()
 
 
 def LogOut():

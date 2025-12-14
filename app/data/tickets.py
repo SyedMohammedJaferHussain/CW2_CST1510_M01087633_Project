@@ -1,4 +1,4 @@
-from app.services.Database_Manager import DatabaseManager
+from app.services.database_manager import DatabaseManager
 from models.it_ticket import ITTicket
 from pathlib import Path
 from typing import Any

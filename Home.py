@@ -1,10 +1,9 @@
 import streamlit as st
-import app.services.user_service as LoginRegister
 import app.data.schema as Schema
-import auth
-import app.data.ticketsClass as tickets
-import app.data.incidentsClass as incidents
+import app.data.tickets as tickets
+import app.data.incidents as incidents
 import app.data.datasets as datasets
+import app.data.users as users
 import pickle
 
 
@@ -50,7 +49,7 @@ def Login(loginTab) -> None:
     """
         Explanation: 
             Creates textboxes for user input for username and password. 
-            When button pressed, goes to user_service.py and checks if login is successful.
+            When button pressed, goes to users.py and checks if login is successful.
             If yes, goes to Cyber_Analytics
             
         Args:
@@ -62,10 +61,10 @@ def Login(loginTab) -> None:
         loginUsername = st.text_input("Username", key="login_username")
         loginPasswd = st.text_input("Password", type="password", key="login_password")
 
-        if st.button("Log in", type="primary"):
+        if st.button("Log in", type = "primary"):
             # Simple credential check (for teaching only – not secure!)
-            loginSuccess: tuple = LoginRegister.LoginUser(loginUsername, loginPasswd)
-            if loginSuccess[0]:
+            loginSuccess: bool = users.LoginUser(loginUsername, loginPasswd)
+            if loginSuccess:
                 st.session_state.logged_in = True
                 st.session_state.username = loginUsername
                 st.success(f"Welcome back, {loginUsername}! ")
@@ -73,15 +72,14 @@ def Login(loginTab) -> None:
                 # Redirect to dashboard page
                 st.switch_page("pages/1_IT_Tickets.py")
             else:
-                st.error(loginSuccess[1])
+                st.error("Username or password is incorrect")
 
 
 def Register(registerTab): 
     """
         Explanation:
             Gets user input through widgets for username, password, and confirm password
-            When button press, goes to auth.py and validates username and password.
-            If validated, registers through user_service.py
+            When button press, goes to users.py and validates username and password.
             If not validated, displays appropriate warning/error
         Args:
             registerTab (_DeltaGenerator_): _description_
@@ -98,17 +96,9 @@ def Register(registerTab):
             if not new_username or not new_password:
                 st.warning("Please fill in all fields.")
             
-            checkValidName: tuple = auth.ValidateUserName(new_username)
-            checkValidPWrd: tuple = auth.ValidatePassWd(new_password, confirm_password)
-            if checkValidName[0] == False:
-                st.error(checkValidName[1])
-            if checkValidPWrd[0] == False:
-                st.write(new_password == confirm_password)
-            
-            checkRegister: tuple = LoginRegister.RegisterUser(new_username, new_password)
-            if not checkRegister[0]: #Failure
-                st.error(checkRegister[1])
-                
+            registerRes = users.RegisterUser(new_username, new_password, confirm_password)
+            if registerRes:
+                st.error(registerRes)                
             else:
                 st.session_state.users[new_username] = new_password
                 st.success("Account created! You can now log in from the Login tab.")
@@ -125,12 +115,15 @@ def SerializeObjs():
         pickle.dump(incidentsLst, incidentsObjs)
     with open("DATA/datasets.bin", "wb") as datasetsObjs:
         pickle.dump(datasetsLst, datasetsObjs)
+    with open("DATA/users.bin", "wb") as usersObjs:
+        pickle.dump(usersLst, usersObjs)
 
 
 if __name__ == "__main__": 
     ticketsLst = tickets.TransferFromDB()
     incidentsLst = incidents.TransferFromDB()
     datasetsLst = datasets.TransferFromDB()
+    usersLst = users.TransferFromDB()
     SerializeObjs()
     Schema.CreateAllTables()
     LoginCheck()
